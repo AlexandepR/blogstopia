@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route, Routes, Router } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header';
+import Home from './pages/Home';
+import SideBar from './components/SideBar';
+import Blogs from './pages/Blogs';
+import Posts from './pages/Posts';
+import MainLayout from './layots/MainLayout';
+import Footer from './components/Footer';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="app-page">
+            <Header/>
+            <div className="app-content">
+                <div className="sideBar">
+                    <SideBar/>
+                </div>
+                <Routes>
+                    {/*<Route path='' element={<MainLayout />}/>*/}
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/blogs" element={<Blogs/>}/>
+                    <Route path="/posts" element={<Posts/>}/>
+                </Routes>
+            </div>
+            <div className="main_container_footer">
+            <Footer/>
+            </div>
+        </div>
+    );
 }
 
 export default App;
