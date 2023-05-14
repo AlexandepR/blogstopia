@@ -1,0 +1,62 @@
+.container_post_home {
+    width: 92%;
+    /*display: flex;*/
+}
+
+.container_post_home h1 {
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+    height: 70px;
+    background-color: rgba(250, 235, 215, 0.57);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+    box-shadow: 0 5px 20px rgba(29, 33, 38, 0.03), 0 1px 2px rgba(29, 33, 38, 0.1);
+}
+.content_post_input {
+    display: flex;
+
+    /*flex-wrap: wrap;*/
+    /*text-align: right;*/
+    justify-content: end;
+    background-color: gold;
+    padding: 10px;
+}
+.content_post_input p {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+.input_post_choose {
+    width: 262px;
+    height: 30px;
+}
+.content_main_post {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /*margin-bottom: 50px;*/
+}
+.content_post_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 15px 20px;
+    /*flex-wrap: wrap;*/
+    width: 300px;
+    height: 250px;
+    background-color: #a0ff08;
+    border: 2px solid #000000;
+}
+.content_post_list > * {
+    margin: 5px 10px;
+}
+.content_post_list :first-child {
+    /*margin-left: 7px;*/
+    font-size: 22px;
+}
+.content_post_list :last-child {
+    font-size: 10px;
+}
+.content_post_list > *:not(:first-child) {
+    /* стили для всех дочерних элементов кроме первого */
+}
