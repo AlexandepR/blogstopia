@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './css/Home.css';
+import '../styles/Home.css';
 import axios from 'axios';
 
 export type BlogsTestType = Array<{

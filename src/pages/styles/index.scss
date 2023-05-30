@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Tangerine:wght@400;700&display=swap');
+@import "reset";
+@import "variables/global";
+@import "themes/normal";
+@import "themes/dark";
+
+.app {
+  font: var(--font-m);
+
+  background: var(--bg-color);
+  color: var(--primary-color);
+
+  min-height: 100vh;
+}
+
+//body {
+//  background-color: rgba(250, 235, 215, 0.57);
+//  font-family: 'Montserrat', sans-serif;
+//  font-weight: 500;
+//}
+

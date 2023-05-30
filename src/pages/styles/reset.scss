@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Tangerine:wght@400;700&display=swap');
 * {
-  /*margin: 0 auto;*/
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-body {
-  background-color: rgba(250, 235, 215, 0.57);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-}
-
