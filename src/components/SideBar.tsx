@@ -2,7 +2,7 @@ import React from 'react';
 import './SideBar.css';
 import { Link } from 'react-router-dom';
 import { Route, Routes } from 'react-router';
-import Blogs from '../pages/Blogs/Blogs';
+import BlogsPage from '../pages/Blogs/ui/BlogsPage';
 
 const SideBar = () => {
     return (
@@ -17,7 +17,7 @@ const SideBar = () => {
                     </ul>
                 </nav>
                 {/*<Routes>*/}
-                {/*    <Route path='/blogs' element = {<Blogs />} />*/}
+                {/*    <Route path='/blogs' element = {<BlogsPage />} />*/}
                 {/*</Routes>*/}
             </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/Home.css';
+import '../../../app/styles/Home.css';
 import axios from 'axios';
 
 export type BlogsTestType = Array<{
@@ -16,7 +16,7 @@ export type BlogsTestType = Array<{
 //         .then(data => data);
 //     // setBlog(data.data.items);
 // }
-const Home = () => {
+const HomePage = () => {
     const [blog, setBlog] = useState<any>([]);
 
     useEffect(() => {
@@ -70,4 +70,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default HomePage;

@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Tangerine:wght@400;700&display=swap');
-@import "reset";
-@import "variables/global";
-@import "themes/normal";
-@import "themes/dark";
+@import "src/app/styles/reset";
+@import "src/app/styles/variables/global";
+@import "src/app/styles/themes/normal";
+@import "src/app/styles/themes/dark";
 
 .app {
   font: var(--font-m);

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styles/post.css';
+import '../../../app/styles/post.css';
 
-const Posts = () => {
+const PostsPage = () => {
     const [posts, setPosts] = useState<any>([]);
 
     useEffect(() => {
@@ -40,4 +40,4 @@ const Posts = () => {
     );
 };
 
-export default Posts;
+export default PostsPage;
