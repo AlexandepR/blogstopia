@@ -5,12 +5,23 @@
 @import "src/app/styles/themes/dark";
 
 .app {
+  //display: flex;
+  //flex-direction: column;
+  //align-items: stretch;
+  //height: 100vh;
   font: var(--font-m);
 
   background: var(--bg-color);
   color: var(--primary-color);
 
   min-height: 100vh;
+}
+.content-page {
+  display: flex;
+}
+.page-wrapper {
+  flex-grow: 1;
+  padding: 20px;
 }
 
 //body {
