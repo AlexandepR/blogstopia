@@ -5,7 +5,7 @@
     "target": "es5",
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "preferAbsolute": true,
+//    "preferAbsolute": true,
     "paths": {
       "./src/*": ["./src/*"]
     },
@@ -25,6 +25,7 @@
     "noImplicitAny": true,
 
     "moduleResolution": "node",
+    "noUncheckedIndexedAccess": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
