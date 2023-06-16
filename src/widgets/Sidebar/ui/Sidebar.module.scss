@@ -1,0 +1,39 @@
+.Sidebar {
+
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--navbar-height) - var(--header-height));
+    position: relative;
+
+    background-color: var(--inverted-bg-color);
+    transition: width 0.3s;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+.mainLink {
+    //margin-top: 55px;
+}
+.links {
+    background: #a0ff08 ;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    //margin-top: 20px;
+    //margin-bottom: auto;
+    text-decoration: none;
+}
+.collapsed {
+    width: var(--sidebar-width-collapsed);
+}
+.switchers {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+    width: 90%;
+}
+.lang {
+    margin-left: 20px;
+}

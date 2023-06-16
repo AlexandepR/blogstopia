@@ -4,13 +4,25 @@ import axios from 'axios';
 const BlogsPage = () => {
     const [blogs, setBlogs] = useState<any>([]);
 
+    const fetchData = async () => {
+        try{
+            const res= await axios
+                .get('https://l1bloggers.vercel.app/blogs')
+            setBlogs(res.data.items);
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
 
     useEffect(() => {
-        const data = axios
-            .get('https://l1bloggers.vercel.app/blogs')
-            .then((data) => {
-                setBlogs(data.data.items);
-            });
+        fetchData()
+        // const data = axios
+        //     .get('https://l1bloggers.vercel.app/blogs')
+            // .then((data) => {
+            //     setBlogs(data.data.items);
+            // });
+        // setBlogs(data.data.items);
     }, []);
 
 

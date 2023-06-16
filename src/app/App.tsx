@@ -1,35 +1,29 @@
-import React, { Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import '../App.scss';
-import './styles/index.scss';
-import Header from '../components/Header';
-import SideBar from '../components/SideBar';
-import { useTheme } from './providers/ThemeProviders/lib/useTheme';
-import { classNames } from 'src/helpers/classNames/className';
-import { BlogsPage } from 'src/pages/Blogs';
-import { PostsPage } from 'src/pages/Posts';
-import { HomePage } from 'src/pages/MainPage';
+import React, { Suspense } from 'react'
+import '../App.scss'
+import './styles/index.scss'
+import Header from '../components/Header'
+import { useTheme } from './providers/ThemeProviders/lib/useTheme'
+import { classNames } from 'src/shared/lib/classNames/className'
+import { Sidebar } from 'src/widgets/Sidebar'
+import { Navbar } from 'src/widgets/Navbar'
+import { AppRouter } from 'src/app/providers/router'
 
-
-
-function App() {
-    const {theme, toggleTheme} = useTheme();
-
-    return (
-        <div className={classNames('app',{},[theme])}>
-            <Header/>
-            <SideBar/>
-            <Suspense fallback={<div>Loading..</div>}>
-                <Routes>
-                    <Route path="/" element={<HomePage/>}/>
-                    <Route path="/blogs" element={<BlogsPage/>}/>
-                    <Route path="/posts" element={<PostsPage/>}/>
-                </Routes>
+function App () {
+  const { theme } = useTheme()
+  return (
+        <div className={classNames('app', {}, [theme])}>
+          <Suspense fallback="">
+                <Header />
+                <Navbar />
+                {/* <Component /> */}
+                <div className="content-page">
+                  <Sidebar />
+                  <AppRouter />
+              </div>
             </Suspense>
-            {/*<Footer/>*/}
-            <button onClick={toggleTheme}>Theme</button>
-        </div>
+          {/* <Footer/> */}
+      </div>
     );
 }
 
-export default App;
+export default App
