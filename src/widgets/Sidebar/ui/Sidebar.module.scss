@@ -1,5 +1,4 @@
 .Sidebar {
-
     width: var(--sidebar-width);
     height: calc(100vh - var(--navbar-height) - var(--header-height));
     position: relative;
@@ -7,33 +6,61 @@
     background-color: var(--inverted-bg-color);
     transition: width 0.3s;
 
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    font-weight: 400;
+    //font-family: 'Montserrat', sans-serif;
+    //font-size: 20px;
+    //font-weight: 400;
 }
 .mainLink {
-    //margin-top: 55px;
+    background: red;
 }
-.links {
+.items {
     background: #a0ff08 ;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    //margin-top: 20px;
-    //margin-bottom: auto;
+    padding: 30px;
     text-decoration: none;
 }
 .collapsed {
     width: var(--sidebar-width-collapsed);
+    .switchers {
+        flex-direction: column;
+    }
+    .lang {
+        opacity: 0;
+        transition: 0.2s opacity;
+    }
+
+    .items {
+        opacity: 0;
+        transition: 0.2s opacity;
+        width: 0;
+    }
+}
+.collapsedBtn{
+    position: absolute;
+    right: -31px;
+    bottom: 35px;
 }
 .switchers {
+    //background-color: red;
     position: absolute;
+    flex-direction: column;
     bottom: 20px;
     display: flex;
     justify-content: flex-start;
     padding-left: 20px;
     width: 90%;
 }
+.themeSwitch {
+    position: absolute;
+    bottom: 0px;
+    height: 40px;
+    width: 40px;
+}
 .lang {
     margin-left: 20px;
+}
+.icon {
+    background-color: #0e12ff;
+    fill: var(--inverted-primary-color);
 }
