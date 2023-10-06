@@ -1,9 +1,15 @@
-.app.light {
-  --bg-color: rgba(250, 235, 215, 0.57);
+:root {
+  --bg-color: rgb(250, 250, 250);
   --inverted-bg-color: rgba(187, 184, 184, 0.55);
-
   --primary-color: #110f0f;
   --secondary-color: #3d3d40;
   --inverted-primary-color: #ffffff;
   --inverted-secondary-color: #f6eae0;
+
+  // skeleton
+  --skeleton-color: #fff;
+  --skeleton-shadow: rgba(0 0 0 / 20%);
+
+  // code
+  --code-bg: #fff;
 }
