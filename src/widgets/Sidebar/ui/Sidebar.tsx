@@ -22,7 +22,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
     return (
             <div
                 data-testid="sidebar"
-                className={classNames(cls.Sidebar2, { [cls.collapsed as string]: collapsed }, [className || ''])}>
+                className={classNames(cls.Sidebar, { [cls.collapsed as string]: collapsed }, [className || ''])}>
 
                 <div className={cls.items}>
                     <AppLink
@@ -59,10 +59,12 @@ export const Sidebar = ({ className }: SidebarProps) => {
                     data-testid='sidebar-toggle'
                     onClick={onToggle}
                     theme={ButtonTheme.BACKGROUND_INVERTED}
-                    square={true}
+                    // square={true}
                     size={ButtonSize.L}
                 >
-                    {collapsed ? ">" : "<"}
+                    <span
+                    className={classNames(cls.collapsedSign)}
+                    >{collapsed ? ">" : "<"}</span>
                 </Button>
                 <div className={cls.switchers}>
                     <ThemeSwitcher className={cls.themeSwitch}/>
