@@ -1,5 +1,1 @@
-import {PostPageAsync} from 'src/pages/Posts/ui/Posts.async'
-
-export {
-    PostPageAsync as PostsPage,
-}
+export { PostPageAsync as PostsPage } from './ui/Posts.async'

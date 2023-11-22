@@ -1,5 +1,1 @@
-import {BlogPageAsync} from 'src/pages/Blogs/ui/Blogs.async'
-
-export {
-    BlogPageAsync as BlogsPage,
-}
+export { BlogPageAsync as BlogsPage } from './ui/Blogs.async'
