@@ -5,7 +5,8 @@ const Header = () => {
     return (
         <div className='header-wrapper'>
         {/*<header className='header'>*/}
-            <h1>Blogger Platform</h1>
+            <h1 className='header-logo-title'>Blogotopia</h1>
+            <h2 className='header-logo-sign'>...more than text</h2>
         {/*</header>*/}
         </div>
     );
