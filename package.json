@@ -34,7 +34,11 @@
     "unit": "jest --config ./config/jest/jest.config.ts",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+    "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix\n",
+    "lint:scss:": "npx stylelint \"**/*.scss\"",
+    "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix"
   },
   "browserslist": {
     "production": [
@@ -63,6 +67,7 @@
     "identity-obj-proxy": "^3.0.0",
     "prop-types": "^15.8.1",
     "storybook": "^7.6.13",
+    "stylelint-config-standard-scss": "10.0.0",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1"
   },
