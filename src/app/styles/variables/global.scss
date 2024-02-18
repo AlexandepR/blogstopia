@@ -1,5 +1,12 @@
 :root {
   --font-family-main: 'Montserrat', sans-serif;
+  //--font-family-main-logo: 'Rozha One', serif;
+  --font-family-main-logo: 'Playfair Display', serif;
+  //--font-family-main-logo: 'Black Han Sans', sans-serif;
+  //--font-family-main-logo-title: 'Satisfy', cursive;
+  --font-family-main-logo-title: 'Playfair Display', serif;
+  //--font-family-main-logo-title: 'Caveat', cursive;
+  //--font-family-main-logo-title: 'Ephesis', cursive;
 
   --font-size-m: 16px;
   --font-line-m: 24px;
@@ -10,12 +17,12 @@
   --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
 
   --font-size-xl: 32px;
-  --font-line-xl: 40px;
+  --font-line-xl: 100px;
   --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
 
   --navbar-height: 50px;
 
-  --header-height: 70px;
+  --header-height: 110px;
 
   --sidebar-width: 20vh;
   --sidebar-width-collapsed: 10vh;

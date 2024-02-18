@@ -1,17 +1,17 @@
-import { classNames } from 'src/shared/lib/classNames/classNames';
-import cls from 'src/widgets/Navbar/ui/Navbar/Navbar.module.scss';
-import { Button, ButtonTheme } from 'src/shared/ui/Button/Button';
+import { classNames } from 'shared/lib/classNames/classNames';
+import cls from './Navbar.module.scss';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { memo, useCallback, useState } from 'react';
-import { LoginModal } from 'src/features/AuthByUsername';
+// import { LoginModal } from 'features/AuthByUsername';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'src/shared/ui/Modal/Modal';
+import { Modal } from 'shared/ui/Modal/Modal';
 
 interface NavbarProps {
-    className?: string;
+    className?: string
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation<string>();
     const [isAuthModal, setIsAuthModal] = useState(false);
 
     const onShowModal = useCallback(() => {
@@ -29,13 +29,16 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 className={cls.links}
                 onClick={onShowModal}
             >
-                Login
+                {t('Войти')}
             </Button>
-             <Modal
+            <Modal
                 isOpen={isAuthModal}
                 onClose={onShowModal}
             >
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dignissimos dolor et eveniet harum id ipsam libero magnam maxime modi nihil numquam qui quo quod recusandae rerum saepe, suscipit voluptates.
+                {/* eslint-disable-next-line max-len */}
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dignissimos dolor et eveniet harum id
+                {/* eslint-disable-next-line max-len */}
+                ipsam libero magnam maxime modi nihil numquam qui quo quod recusandae rerum saepe, suscipit voluptates.
             </Modal>
         </div>
     );

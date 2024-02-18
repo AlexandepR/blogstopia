@@ -1,10 +1,10 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-
-
-import { ThemeDecorator } from 'src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'src/app/providers/ThemeProviders';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+// import { ThemeDecorator } from 'src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from 'app/providers/ThemeProviders';
+// import { Theme } from 'src/app/providers/ThemeProviders';
 // import Button, { ThemeButton } from 'src/shared/ui/Button/Button';
 import { Button, ButtonTheme } from './Button';
 
@@ -12,32 +12,32 @@ export default {
     title: 'shared/Button',
     component: Button,
     argTypes: {
-        backgroundColor: { control: 'color' },
-    },
+        backgroundColor: { control: 'color' }
+    }
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args: any) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-    children: 'Text',
+    children: 'Text'
 };
 
 export const Clear = Template.bind({});
 Clear.args = {
     children: 'Text',
-    theme: ButtonTheme.CLEAR,
+    theme: ButtonTheme.CLEAR
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
     children: 'Text',
-    theme: ButtonTheme.OUTLINE,
+    theme: ButtonTheme.OUTLINE
 };
 
 export const OutlineDark = Template.bind({});
 OutlineDark.args = {
     children: 'Text',
-    theme: ButtonTheme.OUTLINE,
+    theme: ButtonTheme.OUTLINE
 };
 OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];

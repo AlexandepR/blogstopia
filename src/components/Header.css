@@ -6,7 +6,7 @@
     background-color: var(--bg-color);
     font-size: var(--font-size-l);
     font-family: var(--font-family-main-logo);
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
     border-bottom: 1px solid var(--primary-color);
     /*background-color: rgb(255, 188, 48);*/
     /*background-color: rgb(227, 214, 73);*/
@@ -20,6 +20,7 @@
 }
 .header-logo-title{
     align-self: center;
+    margin-top: 5px;
     margin-bottom: 18px;
     letter-spacing: 10px;
 }

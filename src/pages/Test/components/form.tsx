@@ -1,5 +1,5 @@
 import React from 'react';
-import cls from 'src/pages/Test/ui/TestPage.module.scss';
+import cls from 'pages/Test/ui/TestPage.module.scss';
 
 const TestForm = () => {
     return (
@@ -27,7 +27,8 @@ const TestForm = () => {
                         tabIndex={3}
                         name='telephone'
                         type='tel'
-                    />Lorem <span>ipsum dolor sit amet</span>, consectetur adipisicing elit. Itaque, recusandae!
+                    />Lorem <span>ipsum dolor sit amet</span>,
+                    consectetur adipisicing elit. Itaque, recusandae!
                 </div>
                 <div>
                     <p>Gender</p>

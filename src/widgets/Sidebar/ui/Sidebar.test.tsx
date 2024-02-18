@@ -12,9 +12,11 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 // import { Sidebar } from 'src/widgets/Sidebar/ui/Sidebar/Sidebar';
 import {
-    renderWithTranslation,
-} from 'src/shared/lib/tests/renderWithTranslation/renderWithTranslation';
-import { Sidebar } from 'src/widgets/Sidebar';
+    renderWithTranslation
+} from 'shared/lib/tests/renderWithTranslation/renderWithTranslation';
+// } from 'src/shared/lib/tests/renderWithTranslation/renderWithTranslation';
+import { Sidebar } from 'widgets/Sidebar';
+// import { Sidebar } from 'src/widgets/Sidebar';
 import { withTranslation } from 'react-i18next';
 import { MemoryRouter } from 'react-router';
 
