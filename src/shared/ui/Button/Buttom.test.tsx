@@ -1,6 +1,5 @@
-import Button, { ButtonTheme } from 'src/shared/ui/Button/Button';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { render, screen } from '@testing-library/react';
-
 
 describe('Button', () => {
     test('with only first param', () => {
@@ -10,6 +9,6 @@ describe('Button', () => {
     test('ClassNames', () => {
         render(<Button theme={ButtonTheme.CLEAR}>TEST</Button>);
         expect(screen.getByText('TEST')).toHaveClass('clear');
-        screen.debug()
+        screen.debug();
     });
 });

@@ -1,10 +1,10 @@
-import { RouteProps } from 'react-router';
-import { HomePage } from 'src/pages/MainPage';
-import { BlogsPage } from 'src/pages/Blogs';
-import { PostsPage } from 'src/pages/Posts';
-import { NotFoundPage } from 'src/pages/NotFound';
-import TestPage from 'src/pages/Test/ui/TestPage';
-
+import type { RouteProps } from 'react-router';
+import { HomePage } from 'pages/MainPage';
+import { BlogsPage } from 'pages/Blogs';
+import { PostsPage } from 'pages/Posts';
+import React from 'react';
+import { NotFoundPage } from 'pages/NotFound';
+import TestPage from 'pages/Test/components/form';
 
 export enum AppRoutes {
     HOME = 'home',
@@ -19,8 +19,8 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.BLOGS]: '/blogs',
     [AppRoutes.POSTS]: '/posts',
     [AppRoutes.TEST_PAGE]: '/test',
-    [AppRoutes.NOT_FOUND]: '*',
-}
+    [AppRoutes.NOT_FOUND]: '*'
+};
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
     [AppRoutes.HOME]: {
@@ -43,4 +43,4 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
         path: RoutePath.not_found,
         element: <NotFoundPage />
     }
-}
+};

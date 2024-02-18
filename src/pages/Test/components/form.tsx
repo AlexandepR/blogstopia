@@ -1,7 +1,7 @@
 import React from 'react';
-import cls from 'src/pages/Test/ui/TestPage.module.scss';
+import cls from 'pages/Test/ui/TestPage.module.scss';
 
-const TestForm = () => {
+const TestPage = () => {
     return (
         <div className={cls.spanTest}>
             <form action='#' method='get'>
@@ -27,7 +27,8 @@ const TestForm = () => {
                         tabIndex={3}
                         name='telephone'
                         type='tel'
-                    />Lorem <span>ipsum dolor sit amet</span>, consectetur adipisicing elit. Itaque, recusandae!
+                    />Lorem <span>ipsum dolor sit amet</span>
+                    , consectetur adipisicing elit. Itaque, recusandae!
                 </div>
                 <div>
                     <p>Gender</p>
@@ -114,4 +115,4 @@ const TestForm = () => {
     );
 };
 
-export default TestForm;
+export default TestPage;

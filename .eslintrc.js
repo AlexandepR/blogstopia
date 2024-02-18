@@ -21,6 +21,10 @@ module.exports = {
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
+        // ecmaFeatures: {
+        //     jsx: true
+        // },
+        // ecmaVersion: 'latest',
         ecmaVersion: 2021,
         sourceType: 'module'
     },
@@ -32,9 +36,16 @@ module.exports = {
     rules: {
         'react/jsx-indent': [2, 4], // 2 - error
         'react/jsx-indent-props': [2, 4],
+        // indent: [2, 4],
         '@typescript-eslint/indent': [2, 4],
         '@typescript-eslint/semi': [2, 'always'],
-        'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
+        'react/jsx-filename-extension': [
+            2,
+            {
+                extensions: [
+                    '.js', '.jsx', '.tsx'
+                ]
+            }],
         'import/extensions': 'off',
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
@@ -46,10 +57,18 @@ module.exports = {
         'react/function-component-definition': 'off',
         'no-shadow': 'off',
         'no-underscore-dangle': 'off',
-        'no-unused-vars': 'warn',
+        'no-unused-vars': 'off',
+        // 'no-floating-promise/no-floating-promise': 'off',
+        // 'handle-callback-err': 'warn',
+        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/prefer-nullish-coalescing': 'off',
+        '@typescript-eslint/consistent-type-assertions': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/strict-boolean-expressions': 'warn',
-        indent: [2, 4],
+        // '@typescript-eslint/no-floating-promises': 'off',
+        'max-len': ['error', { ignoreComments: true, code: 100 }],
         '@typescript-eslint/consistent-type-imports': [
             'error',
             {
