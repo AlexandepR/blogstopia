@@ -23,7 +23,7 @@
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS",
+      "module": "CommonJS"
     }
   },
   "include": [
@@ -33,6 +33,7 @@
     "./src/components/*.tsx",
     "./src/components",
     "./**/**/*.tsx",
+    "**/**/**/*.ts"
     //    "./components",     //
     //    "components",
     //    "src/components",
@@ -49,6 +50,6 @@
 //    "src/**/**/**/**/*.scss",
 //    "src/**/**/**/**/**/*.scss",
 //    "src/widgets/Navbar/ui/Navbar/*.scss"
-  ],
+  ]
   //  "exclude": ["node_modules", "dist", ".yalc", "build", "public", "scripts"]
 }

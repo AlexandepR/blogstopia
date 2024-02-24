@@ -66,7 +66,7 @@ module.exports = {
         '@typescript-eslint/prefer-nullish-coalescing': 'off',
         '@typescript-eslint/consistent-type-assertions': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/strict-boolean-expressions': 'warn',
+        '@typescript-eslint/strict-boolean-expressions': 'off',
         // '@typescript-eslint/no-floating-promises': 'off',
         'max-len': ['error', { ignoreComments: true, code: 100 }],
         '@typescript-eslint/consistent-type-imports': [
