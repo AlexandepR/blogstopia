@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "module": "CommonJS",
+    "module": "ESNext",
     "target": "es5",
     "jsx": "react-jsx",
     "allowJs": true,
@@ -14,7 +14,9 @@
       "shared/*": ["shared/*"],
       "widgets/*": ["widgets/*"],
       "features/*": ["features/*"],
-      "components/*": ["components/*"]
+      "components/*": ["components/*"],
+      "node_modules/eslint/lib/cli-engine/formatters/stylish/*": ["stylish/*"],
+      "node_modules/strip-ansi/*": ["strip-ansi/*"]
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -34,7 +36,7 @@
     "./src/**/*.ts",
     "./src/**/*.tsx",
 //    "./**/**/*.tsx",
-    "./config/**/**/*.ts",
+    "./config/**/**/*.ts"
   ],
     "exclude": ["node_modules", "dist", ".yalc", "build", "public", "scripts"]
 }

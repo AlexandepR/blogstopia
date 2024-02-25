@@ -11,6 +11,7 @@ module.exports = {
         // 'airbnb',
         // 'plugin:i18next/recommended'
     ],
+
     overrides: [
         {
             files: [
@@ -31,7 +32,7 @@ module.exports = {
         // ecmaVersion: 2021,
         sourceType: 'module'
     },
-    ignorePatterns: ['./node_modules/'],
+    ignorePatterns: ['node_modules/'],
     plugins: [
         'react',
         '@typescript-eslint',
