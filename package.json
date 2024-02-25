@@ -33,9 +33,9 @@
   },
   "scripts": {
     "start": "react-scripts start --port 3001",
-    "start2": "webpack serve --env port=3000",
+    "start-webpack": "webpack serve --env port=3000",
     "build": "react-scripts build",
-    "build2": "webpack  --env mode=production",
+    "build:prod": "webpack  --env mode=production",
     "build:dev": "webpack  --env mode=development",
     "build-webpack": "webpack",
     "unit": "jest --config ./config/jest/jest.config.ts",
