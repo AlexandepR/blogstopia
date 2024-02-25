@@ -10,6 +10,7 @@ import { classNames } from 'shared/lib/classNames/className';
 
 function App () {
     const { theme } = useTheme();
+
     return (
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">

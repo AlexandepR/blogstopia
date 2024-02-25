@@ -6,7 +6,10 @@ module.exports = {
     },
     extends: [
         'standard-with-typescript',
-        'plugin:react/recommended'
+        'plugin:react/recommended',
+        'eslint:recommended'
+        // 'airbnb',
+        // 'plugin:i18next/recommended'
     ],
     overrides: [
         {
@@ -21,18 +24,24 @@ module.exports = {
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
-        // ecmaFeatures: {
-        //     jsx: true
-        // },
-        // ecmaVersion: 'latest',
-        ecmaVersion: 2021,
+        ecmaFeatures: {
+            jsx: true
+        },
+        ecmaVersion: 'latest',
+        // ecmaVersion: 2021,
         sourceType: 'module'
     },
+    ignorePatterns: ['./node_modules/'],
     plugins: [
         'react',
         '@typescript-eslint',
         'import'
     ],
+    settings: {
+        react: {
+            version: 'detect'
+        }
+    },
     rules: {
         'react/jsx-indent': [2, 4], // 2 - error
         'react/jsx-indent-props': [2, 4],

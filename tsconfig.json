@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "module": "ESNext",
+    "module": "CommonJS",
     "target": "es5",
     "jsx": "react-jsx",
     "allowJs": true,
@@ -22,34 +22,19 @@
     "noImplicitAny": true
   },
   "ts-node": {
+//    "esm": true,
+//    "TranspileOnly": true,
     "compilerOptions": {
       "module": "CommonJS"
     }
   },
   "include": [
     ".eslintrc.js",
+    "./webpack.config.ts",
     "./src/**/*.ts",
     "./src/**/*.tsx",
-    "./src/components/*.tsx",
-    "./src/components",
-    "./**/**/*.tsx",
-    "**/**/**/*.ts"
-    //    "./components",     //
-    //    "components",
-    //    "src/components",
-    //    "./config/jest/setupTests.ts",
-    //    "./config/jest/jest.config.ts",
-    //    "config/**/*.{ts,tsx}", //
-//    "jest.config.ts",
-//    "config/**/*.ts",
-//    "config/**/*.tsx",
-//    "src/**/*.scss",
-//    "src/**/**/*.scss",
-//    "src/**/**/**/*.scss",
-//    "src/**/**/**/**/*.scss",
-//    "src/**/**/**/**/*.scss",
-//    "src/**/**/**/**/**/*.scss",
-//    "src/widgets/Navbar/ui/Navbar/*.scss"
-  ]
-  //  "exclude": ["node_modules", "dist", ".yalc", "build", "public", "scripts"]
+//    "./**/**/*.tsx",
+    "./config/**/**/*.ts",
+  ],
+    "exclude": ["node_modules", "dist", ".yalc", "build", "public", "scripts"]
 }
