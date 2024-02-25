@@ -78,6 +78,7 @@
     "jest": "^29.7.0",
     "prop-types": "^15.8.1",
     "storybook": "^7.6.16",
+    "style-loader": "^3.3.4",
     "stylelint-config-standard-scss": "^13.0.0",
     "ts-jest": "^29.1.2",
     "ts-loader": "^9.5.1",
@@ -85,8 +86,7 @@
     "webpack": "^5.90.3",
     "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.2",
-    "type":"module"
+    "webpack-dev-server": "^5.0.2"
   },
   "browserslist": {
     "production": [
@@ -99,5 +99,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "strip-ansi": "6.0.0"
+  },
+  "overrides": {
+    "strip-ansi": "6.0.0"
   }
 }

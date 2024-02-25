@@ -3,6 +3,7 @@ import cls from 'shared/ui/AppLink/Applink.module.scss';
 import type { LinkProps } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import type { FC } from 'react';
+import React from 'react';
 
 export enum AppLinkTheme {
     PRIMARY = 'primary',
