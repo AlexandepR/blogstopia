@@ -36,7 +36,7 @@
     "start-webpack": "webpack serve --env port=3000",
     "build": "react-scripts build",
     "build:prod": "webpack  --env mode=production",
-    "build:dev": "webpack  --env mode=development",
+    "build:dev-webpack": "webpack  --env mode=development",
     "build-webpack": "webpack",
     "unit": "jest --config ./config/jest/jest.config.ts",
     "eject": "react-scripts eject",
@@ -47,7 +47,9 @@
     "lint:scss:": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test": "jest --config ./config/jest/jest.config.ts",
-    "yarn update": "yarn upgrade react-scripts react-dev-utils"
+    "yarn update": "yarn upgrade react-scripts react-dev-utils",
+    "npm_build:dev": "npm run build:dev",
+    "npm_build:prod": "npm run build:prod"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
@@ -77,6 +79,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "prop-types": "^15.8.1",
+    "regenerator-runtime": "^0.14.1",
     "storybook": "^7.6.16",
     "style-loader": "^3.3.4",
     "stylelint-config-standard-scss": "^13.0.0",

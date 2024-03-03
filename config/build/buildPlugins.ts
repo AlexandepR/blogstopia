@@ -23,8 +23,8 @@ export function buildPlugins ({ paths, isDev }: BuildOptions): webpack.WebpackPl
     if (isDev) {
         plugins.push(new webpack.HotModuleReplacementPlugin());
         plugins.push(new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            openAnalyzer: false
+            // analyzerPort: 8889,
+            openAnalyzer: true
         }));
     }
 
