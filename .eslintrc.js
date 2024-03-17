@@ -5,19 +5,24 @@ module.exports = {
         jest: true
     },
     extends: [
-        'standard-with-typescript',
         'plugin:react/recommended',
-        'eslint:recommended'
-        // 'airbnb',
-        // 'plugin:i18next/recommended'
+        'standard-with-typescript',
+        'eslint:recommended',
+        // 'prettier',
+        'plugin:i18next/recommended'
     ],
 
     overrides: [
         {
             files: [
                 '.eslintrc.js',
-                '.eslintrc.cjs'
+                '.eslintrc.cjs',
+                '**/src/**/*.{test,stories}.{ts,tsx}'
             ],
+            rules: {
+                'i18next/no-literal-string': 'off',
+                'max-len': 'off'
+            },
             parserOptions: {
                 sourceType: 'script'
             }
@@ -32,11 +37,14 @@ module.exports = {
         // ecmaVersion: 2021,
         sourceType: 'module'
     },
-    ignorePatterns: ['node_modules/'],
+    ignorePatterns: ['node_modules'],
     plugins: [
         'react',
         '@typescript-eslint',
-        'import'
+        'i18next',
+        'react-hooks'
+        // 'unused-imports'
+        // 'prettier'
     ],
     settings: {
         react: {
@@ -68,8 +76,6 @@ module.exports = {
         'no-shadow': 'off',
         'no-underscore-dangle': 'off',
         'no-unused-vars': 'off',
-        // 'no-floating-promise/no-floating-promise': 'off',
-        // 'handle-callback-err': 'warn',
         '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
@@ -77,12 +83,34 @@ module.exports = {
         '@typescript-eslint/consistent-type-assertions': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/strict-boolean-expressions': 'off',
-        // '@typescript-eslint/no-floating-promises': 'off',
         'max-len': ['error', { ignoreComments: true, code: 100 }],
         '@typescript-eslint/consistent-type-imports': [
             'error',
             {
                 prefer: 'type-imports'
+            }
+        ],
+        'i18next/no-literal-string': [
+            'error',
+            {
+                markupOnly: true,
+                ignoreAttribute: [
+                    'as',
+                    'role',
+                    'data-testid',
+                    'to',
+                    'target',
+                    'justify',
+                    'align',
+                    'border',
+                    'direction',
+                    'gap',
+                    'feature',
+                    'color',
+                    'variant',
+                    'size',
+                    'wrap'
+                ]
             }
         ]
     }

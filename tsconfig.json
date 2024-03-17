@@ -34,5 +34,13 @@
     "./config/**/**/*.ts",
     "./config/jest/setupTests.ts"
   ],
-  "exclude": ["node_modules", "dist", ".yalc", "build", "public", "scripts"]
+  "exclude": [
+    "node_modules",
+    "storybook",
+    "dist",
+    ".yalc",
+    "build",
+    "public",
+    "scripts"
+  ]
 }
