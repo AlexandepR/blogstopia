@@ -4,12 +4,14 @@ export interface BuildPaths {
     entry: string
     build: string
     html: string
+    public: string
     src: string
 }
 
 export interface BuildEnv {
     mode: BuildMode
     port: number
+    analyzer?: boolean
 }
 
 export interface BuildOptions {
@@ -17,6 +19,7 @@ export interface BuildOptions {
     paths: BuildPaths
     isDev: boolean
     port: number
+    analyzer?: boolean
     apiUrl?: string
     project?: 'storybook' | 'frontend' | 'jest'
 }

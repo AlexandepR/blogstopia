@@ -1,48 +1,37 @@
 import type webpack from 'webpack';
 import { buildCssLoader } from './loaders/buildCssLoader';
 import type { BuildOptions } from './types/config';
+import ReactRefreshTypeScript from 'react-refresh-typescript';
+import { buildBabelLoader } from './babel/buildBabelLoader';
 
-export function buildLoaders ({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] {
+    const { mode } = options;
+    const isDev = mode === 'development';
+
     const svgLoader = {
         test: /\.svg$/,
         use: ['@svgr/webpack']
     };
 
-    const babelLoader = {
-        test: /\.(js|jsx|tsx)$/,
-        exclude: /node_modules/,
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env'],
-                plugins: [
-                    [
-                        'i18next-extract',
-                        {
-                            locales: ['ru', 'en'],
-                            keyAsDefaultValue: true
-                        }
-                    ]
-                ]
-            }
-        }
-    };
-
     const cssLoader = buildCssLoader(isDev);
 
-    // Если не используем тайпскрипт - нужен babel-loader
-    const tsLoader = {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: [
-            {
-                loader: 'ts-loader',
-                options: {
-                    transpileOnly: true // skip type checking during the compilation process
-                }
-            }
-        ]
-    };
+    // If we do not use typescript - need babel-loader
+    const babelLoader = buildBabelLoader(options);
+    // const tsLoader = {
+    //     test: /\.tsx?$/,
+    //     exclude: /node_modules/,
+    //     use: [
+    //         {
+    //             loader: 'ts-loader',
+    //             options: {
+    //                 transpileOnly: true, // skip type checking during the compilation process
+    //                 getCustomTransformers: () => ({
+    //                     before: [isDev && ReactRefreshTypeScript()].filter(Boolean)
+    //                 })
+    //             }
+    //         }
+    //     ]
+    // };
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff2|woff)$/i,
@@ -56,8 +45,8 @@ export function buildLoaders ({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     return [
         fileLoader,
         svgLoader,
-        babelLoader,
-        tsLoader,
+        ...babelLoader,
+        // tsLoader,
         ...cssLoader
     ];
 }
