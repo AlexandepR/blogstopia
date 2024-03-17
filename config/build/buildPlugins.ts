@@ -28,7 +28,7 @@ export function buildPlugins ({ paths, isDev }: BuildOptions): webpack.WebpackPl
     if (isDev) {
         plugins.push(new webpack.HotModuleReplacementPlugin());
         plugins.push(new BundleAnalyzerPlugin({
-            // analyzerPort: 8889,
+            analyzerPort: 8889,
             openAnalyzer: true
         }));
     }
