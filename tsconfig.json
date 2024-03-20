@@ -18,7 +18,7 @@
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "noImplicitAny": true
   },
   "ts-node": {
@@ -37,10 +37,7 @@
   "exclude": [
     "node_modules",
     "storybook",
-    "dist",
-    ".yalc",
     "build",
-    "public",
-    "scripts"
+    "public"
   ]
 }

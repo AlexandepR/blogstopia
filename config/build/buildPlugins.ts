@@ -25,7 +25,7 @@ export function buildPlugins (options: BuildOptions): webpack.WebpackPluginInsta
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev)
         }),
-        new CircularDependencyPlugin({
+        new CircularDependencyPlugin({ // find cyclic dependencies in the project
             exclude: /node_modules/,
             failOnError: true
         })
@@ -34,7 +34,7 @@ export function buildPlugins (options: BuildOptions): webpack.WebpackPluginInsta
     if (isDev) {
         plugins.push(new webpack.HotModuleReplacementPlugin());
         plugins.push(new ForkTsCheckerWebpackPlugin()); // Makes type checking a separate process
-        plugins.push(new ReactRefreshWebpackPlugin());
+        plugins.push(new ReactRefreshWebpackPlugin()); // Hot start
     }
 
     if (isProd) {

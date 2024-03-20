@@ -5,9 +5,10 @@ import { BuildEnv, BuildPaths } from './config/build/types/config';
 
 export default (env: BuildEnv) => {
     const paths: BuildPaths = {
-        entry: path.resolve(__dirname, 'src', 'index.tsx'),
         build: path.resolve(__dirname, 'build'),
+        entry: path.resolve(__dirname, 'src', 'index.tsx'),
         html: path.resolve(__dirname, 'public', 'index.html'),
+        public: path.resolve(__dirname, 'public'),
         src: path.resolve(__dirname, 'src')
     };
 
@@ -15,12 +16,14 @@ export default (env: BuildEnv) => {
     const PORT = env.port || 3000;
 
     const isDev = mode === 'development';
-    console.log(isDev, '----WebPack isDev----');
+    console.log(isDev, '---- isDev ----');
+    console.log(env.analyzer, '---- analyzer ----');
 
     const config: webpack.Configuration = buildWebpackConfig({
         mode,
         paths,
         isDev,
+        analyzer: env.analyzer,
         port: PORT,
     });
 
