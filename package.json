@@ -46,7 +46,7 @@
     "build-storybook": "storybook build",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix\n",
-    "lint:scss:": "npx stylelint \"**/*.scss\"",
+    "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test": "jest --config ./config/jest/jest.config.ts",
     "yarn update": "yarn upgrade react-scripts react-dev-utils"
