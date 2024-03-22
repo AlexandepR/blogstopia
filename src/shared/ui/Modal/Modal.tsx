@@ -74,6 +74,7 @@ export const Modal = (props: ModalProps) => {
         };
     }, [isOpen, onKeyDown]);
     console.log(isOpen, 'isOpen----1-----');
+
     const mods: ModsType = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing

@@ -1,32 +1,31 @@
 :root {
   --font-family-main: 'Montserrat', sans-serif;
-  //--font-family-main-logo: 'Rozha One', serif;
+
+  // --font-family-main-logo: 'Rozha One', serif;
   --font-family-main-logo: 'Playfair Display', serif;
-  //--font-family-main-logo: 'Black Han Sans', sans-serif;
-  //--font-family-main-logo-title: 'Satisfy', cursive;
+
+  // --font-family-main-logo: 'Black Han Sans', sans-serif;
+  // --font-family-main-logo-title: 'Satisfy', cursive;
   --font-family-main-logo-title: 'Playfair Display', serif;
-  //--font-family-main-logo-title: 'Caveat', cursive;
-  //--font-family-main-logo-title: 'Ephesis', cursive;
+
+  // --font-family-main-logo-title: 'Caveat', cursive;
+  // --font-family-main-logo-title: 'Ephesis', cursive;
 
   --font-size-m: 16px;
   --font-line-m: 24px;
   --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
-
   --font-size-l: 24px;
   --font-line-l: 32px;
   --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
-
   --font-size-xl: 32px;
   --font-line-xl: 100px;
   --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
-
   --navbar-height: 50px;
-
   --header-height: 110px;
-
   --sidebar-width: 20vh;
   --sidebar-width-collapsed: 10vh;
-  //--sidebar-height: 20vh;
+
+  // --sidebar-height: 20vh;
 
   // z - Индексы
   --modal-z-index: 1000;
@@ -36,5 +35,6 @@
   --overlay-color: rgba(0 0 0 / 60%);
   --red-light: #f00;
   --red-dark: #ce0505;
-  //--bg-color: rgb(250, 250, 250);
+
+  // --bg-color: rgb(250, 250, 250);
 }
