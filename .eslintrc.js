@@ -34,7 +34,6 @@ module.exports = {
             jsx: true
         },
         ecmaVersion: 'latest',
-        // ecmaVersion: 2021,
         sourceType: 'module'
     },
     ignorePatterns: ['node_modules'],

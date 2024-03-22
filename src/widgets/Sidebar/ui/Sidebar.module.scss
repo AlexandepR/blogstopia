@@ -2,30 +2,56 @@
     width: var(--sidebar-width);
     height: calc(100vh - var(--navbar-height) - var(--header-height));
     position: relative;
-
     background-color: var(--inverted-bg-color);
     transition: width 0.3s;
 
-    //font-family: 'Montserrat', sans-serif;
-    //font-size: 20px;
-    //font-weight: 400;
+    //  font-family: 'Montserrat', sans-serif;
+    //  font-size: 20px;
+    //  font-weight: 400;
 }
 
 .items {
-    //background: #a0ff08 ;
+    //  background: #a0ff08 ;
     gap: 10px;
     display: flex;
     flex-direction: column;
     padding: 5px 30px;
     text-decoration: none;
-    //font-size: var(--font-size-l);
+
+    //  font-size: var(--font-size-l);
 }
+
+.switchers {
+    //  background-color: red;
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+
+    //  padding-right: 30px;
+    //  flex-grow: 1;
+}
+
+.lang {
+    //  position: absolute;
+    display: flex;
+    width: 50%;
+
+    //  flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
 .collapsed {
     width: var(--sidebar-width-collapsed);
+
     .switchers {
-        //justify-content: space-around;
-        //flex-direction: column;
+        //  justify-content: space-around;
+        //  flex-direction: column;
     }
+
     .lang {
         opacity: 0;
         transition: 0.2s opacity;
@@ -37,42 +63,30 @@
         width: 0;
     }
 }
+
 .collapsedBtn {
     position: absolute;
     right: -17px;
     bottom: 30px;
     width: 17px;
 }
+
 .collapsedSign {
     font-size: 0.8em;
 }
 
 
-.switchers {
-    //background-color: red;
-    position: absolute;
-    bottom: 20px;
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-around;
-    //padding-right: 30px;
-    //flex-grow: 1;
-}
+
+
 .themeSwitch {
-    //position: absolute;
+    //  position: absolute;
     display: flex;
     justify-content: center;
-    bottom: 0px;
+    bottom: 0;
     height: 40px;
     width: 40px;
-    //flex-grow: 1;
+
+    //  flex-grow: 1;
 }
-.lang {
-    //position: absolute;
-    display: flex;
-    width: 50%;
-    //flex-grow: 1;
-    align-items: center;
-    justify-content: center;
-}
+
+

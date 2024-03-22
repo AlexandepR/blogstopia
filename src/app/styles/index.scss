@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Tangerine:wght@400;700&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Tangerine:wght@400;700&display=swap';
 @import "src/app/styles/reset";
 @import "src/app/styles/variables/global";
 @import "src/app/styles/themes/normal";
@@ -8,13 +8,16 @@ body {
   font: var(--font-m);
   color: var(--primary-color);
 }
+
 .app {
   background: var(--bg-color);
   min-height: 100vh;
 }
+
 .content-page {
   display: flex;
 }
+
 .page-wrapper {
   flex-grow: 1;
   padding: 20px 20px 20px 45px;
