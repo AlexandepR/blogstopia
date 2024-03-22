@@ -9,6 +9,7 @@ module.exports = {
         'standard-with-typescript',
         'eslint:recommended',
         // 'prettier',
+        'plugin:@typescript-eslint/recommended',
         'plugin:i18next/recommended'
     ],
 
@@ -43,8 +44,8 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks'
-        // 'unused-imports'
-        // 'prettier'
+    // 'unused-imports'
+    // 'prettier'
     ],
     settings: {
         react: {
@@ -83,6 +84,7 @@ module.exports = {
         '@typescript-eslint/consistent-type-assertions': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/strict-boolean-expressions': 'off',
+        '@typescript-eslint/naming-convention': 'warn',
         'max-len': ['error', { ignoreComments: true, code: 100 }],
         '@typescript-eslint/consistent-type-imports': [
             'error',
@@ -113,8 +115,11 @@ module.exports = {
                 ]
             }
         ]
+    },
+    globals: {
+    __IS_DEV__: true,
+    __API__: true,
+        __PROJECT__: true,
+        __PLATFORM__: true
     }
-    // globals: {
-    // 'process.env.IS_DEV': true
-    // }
 };

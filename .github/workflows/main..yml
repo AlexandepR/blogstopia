@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 18.x ]
+        node-version: [ 20.x ]
 
     steps:
       - uses: actions/checkout@v2
@@ -26,4 +26,4 @@ jobs:
       - name: linting css
         run:  yarn run lint:scss
       - name: unit testing
-        run: npm run test:unit
+        run: yarn run test:unit
