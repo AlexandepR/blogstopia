@@ -32,7 +32,7 @@
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "./config/**/**/*.ts",
-    "./config/jest/setupTests.ts"
+    "./config/jest/*"
   ],
   "exclude": [
     "node_modules",

@@ -28,15 +28,15 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 theme={ButtonTheme.CLEAR}
                 className={cls.links}
                 onClick={onShowModal}
+                // eslint-disable-next-line i18next/no-literal-string
             >
                 Login
             </Button>
             <Modal
                 isOpen={isAuthModal}
                 onClose={onShowModal}
-            >
-                {/* eslint-disable-next-line max-len */}
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dignissimos dolor et eveniet harum id ipsam libero magnam maxime modi nihil numquam qui quo quod recusandae rerum saepe, suscipit voluptates.
+                // eslint-disable-next-line i18next/no-literal-string
+            > Lorem
             </Modal>
         </div>
     );

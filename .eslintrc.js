@@ -8,8 +8,6 @@ module.exports = {
         'plugin:react/recommended',
         'standard-with-typescript',
         'eslint:recommended',
-        // 'prettier',
-        'plugin:@typescript-eslint/recommended',
         'plugin:i18next/recommended'
     ],
 
@@ -18,10 +16,11 @@ module.exports = {
             files: [
                 '.eslintrc.js',
                 '.eslintrc.cjs',
-                '**/src/**/*.{test,stories}.{ts,tsx}'
+                '**/src/**/*.{test,stories}.{ts,tsx}',
+                './src/**/*'
             ],
             rules: {
-                'i18next/no-literal-string': 'off',
+                'i18next/no-literal-string': 'warn',
                 'max-len': 'off'
             },
             parserOptions: {
@@ -117,8 +116,8 @@ module.exports = {
         ]
     },
     globals: {
-    __IS_DEV__: true,
-    __API__: true,
+        __IS_DEV__: true,
+        __API__: true,
         __PROJECT__: true,
         __PLATFORM__: true
     }
