@@ -21,13 +21,14 @@ export enum ButtonSize {
     XL = 'size_xl',
 }
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
     theme?: ButtonTheme
     square?: boolean
     size?: ButtonSize
     disabled?: boolean
     children?: ReactNode
+    tags?: any
 }
 
 export const Button = memo((props: ButtonProps) => {
