@@ -1,3 +1,16 @@
-.LangSwitcher{
-  // test
+.animatedText {
+  opacity: 0;
+  transition: opacity 0.4s;
+  position: absolute;
+  pointer-events: none
 }
+
+.visibleShort {
+  opacity: 1;
+}
+
+.visibleLong {
+  opacity: 1;
+}
+
+
