@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import cls from 'widgets/Sidebar/ui/Sidebar.module.scss';
 import LangSwitcher from 'shared/ui/LangSwitcher/LangSwitcher';
 import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
@@ -17,9 +17,9 @@ export const Sidebar = ({ className }: SidebarProps) => {
     const [isActive, setIsActive] = useState(false);
     const { t } = useTranslation('');
 
-    const onToggle = () => {
+    const onToggle = useCallback(() => {
         setCollapsed(prev => !prev);
-    };
+    }, []);
     const handleLinkClick = () => {
         setIsActive(true);
     };
@@ -77,7 +77,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
             </Button>
             <div className={cls.switchers}>
                 <ThemeSwitcher className={cls.themeSwitch}/>
-                <LangSwitcher className={cls.lang}/>
+                <LangSwitcher className={cls.lang} short={collapsed}/>
             </div>
         </div>
     );

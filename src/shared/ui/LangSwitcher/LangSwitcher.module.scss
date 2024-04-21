@@ -2,15 +2,7 @@
   opacity: 0;
   transition: opacity 0.4s;
   position: absolute;
-  pointer-events: none
 }
-
-.visibleShort {
+.visibleShort, .visibleLong {
   opacity: 1;
 }
-
-.visibleLong {
-  opacity: 1;
-}
-
-
