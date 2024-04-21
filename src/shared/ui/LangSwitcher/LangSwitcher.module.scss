@@ -1,8 +1,10 @@
 .animatedText {
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.3s;
   position: absolute;
 }
+
+
 .visibleShort, .visibleLong {
   opacity: 1;
 }
