@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import SvgToReactComponent from 'shared/assets/icons/svgToReactComponent';
 
 interface SidebarProps {
-    className?: string
+    className?: string;
 }
 
 export const Sidebar = ({ className }: SidebarProps) => {

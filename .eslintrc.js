@@ -6,8 +6,8 @@ module.exports = {
     },
     extends: [
         'plugin:react/recommended',
-        'standard-with-typescript',
-        'eslint:recommended',
+        // 'standard-with-typescript',
+        // 'eslint:recommended',
         'plugin:i18next/recommended'
     ],
 
@@ -52,10 +52,10 @@ module.exports = {
     },
     rules: {
         'react/jsx-indent': [2, 4], // 2 - error
-        'react/jsx-indent-props': [2, 4],
+        // 'react/jsx-indent-props': [2, 4],
         // indent: [2, 4],
-        '@typescript-eslint/indent': [2, 4],
         '@typescript-eslint/semi': [2, 'always'],
+        '@typescript-eslint/indent': [2, 4],
         'react/jsx-filename-extension': [
             2,
             {
