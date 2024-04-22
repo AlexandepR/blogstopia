@@ -2,7 +2,6 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import cls from 'widgets/Navbar/ui/Navbar/Navbar.module.scss';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { memo, useCallback, useState } from 'react';
-import { LoginModal } from 'features/AuthByUsername';
 import { useTranslation } from 'react-i18next';
 import { Modal } from 'shared/ui/Modal/Modal';
 

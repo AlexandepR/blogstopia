@@ -27,10 +27,10 @@ export const LangSwitcher = ({ className, short }: LangSwitcherProps) => {
             theme={ButtonTheme.CLEAR}
             onClick={toggle}
         >
-            <span className={`${cls.animatedText} ${visibleIndex === 0 ? cls.visibleShort : ''}`}>
+            <span className={classNames(cls.animatedText, { [cls.visibleShort]: short }, [className || ''])}>
                 {t('Короткий язык')}
             </span>
-            <span className={`${cls.animatedText} ${visibleIndex === 1 ? cls.visibleLong : ''}`}>
+            <span className={classNames(cls.animatedText, { [cls.visibleShort]: !short }, [className || ''])}>
                 {t('Язык')}
             </span>
         </Button>

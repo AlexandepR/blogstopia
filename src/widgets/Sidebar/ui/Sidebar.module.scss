@@ -22,6 +22,7 @@
 
 .link{
     display: flex;
+    opacity: 1;
     align-items: center;
 }
 
@@ -29,9 +30,8 @@
     fill: var(--secondary-color);
     stroke: var(--secondary-color);
     margin-right: 10px;
-    opacity: 1;
-    width: 33px;
-    height: 33px;
+    //width: 33px;
+    //height: 33px;
 }
 
 .switchers {
