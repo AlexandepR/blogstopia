@@ -7,6 +7,7 @@ import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
+import SvgToReactComponent from 'shared/assets/icons/svgToReactComponent';
 
 interface SidebarProps {
     className?: string
@@ -30,42 +31,62 @@ export const Sidebar = ({ className }: SidebarProps) => {
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className || ''])}>
 
             <div className={cls.items}>
-                <AppLink
-                    theme={AppLinkTheme.SECONDARY}
-                    to={RoutePath.home}
-                    className={cls.mainLink}
-                    isActive={isActive}
-                    onClick={handleLinkClick}
-                >
-                    {t('Главная страница')}
-                </AppLink>
-                <AppLink
-                    theme={AppLinkTheme.SECONDARY}
-                    to={RoutePath.blogs}
-                    className={cls.link}
-                    isActive={isActive}
-                    onClick={handleLinkClick}
-                >
-                    {t('Блоги')}
-                </AppLink>
-                <AppLink
-                    theme={AppLinkTheme.SECONDARY}
-                    to={RoutePath.posts}
-                    className={cls.link}
-                >
-                    {t('Посты')}
-                </AppLink>
-                <AppLink
-                    theme={AppLinkTheme.SECONDARY}
-                    to={RoutePath.test}
-                    className={cls.link}
-                >
-                    {t('Тест')}
-                </AppLink>
+                <div>
+                    <AppLink
+                        theme={AppLinkTheme.SECONDARY}
+                        to={RoutePath.home}
+                        className={cls.item}
+                        isActive={isActive}
+                        onClick={handleLinkClick}
+                    > <SvgToReactComponent
+                            id="homeIcon"
+                            className={cls.icon}
+                        />
+                        <span className={cls.link}>
+                            {t('Главная страница')}
+                        </span>
+                    </AppLink>
+                </div>
+                <div className={cls.item}>
+                    <SvgToReactComponent
+                        id="blogsIcon"
+                        className={cls.icon}
+                    />
+                    <AppLink
+                        theme={AppLinkTheme.SECONDARY}
+                        to={RoutePath.blogs}
+                        className={cls.link}
+                        isActive={isActive}
+                        onClick={handleLinkClick}
+                    >
+                        {t('Блоги')}
+                    </AppLink>
+                </div>
+                <div className={cls.item}>
+                    <SvgToReactComponent
+                        className={cls.icon}
+                        id="postsIcon"/>
+                    <AppLink
+                        theme={AppLinkTheme.SECONDARY}
+                        to={RoutePath.posts}
+                        className={cls.link}
+                    >
+                        {t('Посты')}
+                    </AppLink>
+                </div>
+
+                {/* <AppLink */}
+                {/*    theme={AppLinkTheme.SECONDARY} */}
+                {/*    to={RoutePath.test} */}
+                {/*    className={cls.link} */}
+                {/* > */}
+                {/*    {t('Тест')} */}
+                {/* </AppLink> */}
+
             </div>
             <Button
                 className={classNames(cls.collapsedBtn)}
-                data-testid='sidebar-toggle'
+                data-testid="sidebar-toggle"
                 onClick={onToggle}
                 theme={ButtonTheme.BACKGROUND_INVERTED}
                 // square={true}

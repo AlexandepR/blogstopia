@@ -7,11 +7,31 @@
 }
 
 .items {
-    gap: 10px;
+    gap: 20px;
     display: flex;
     flex-direction: column;
-    padding: 5px 30px;
+    margin: 10px 15px;
     text-decoration: none;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.link{
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    fill: var(--secondary-color);
+    stroke: var(--secondary-color);
+    margin-right: 10px;
+    opacity: 1;
+    width: 33px;
+    height: 33px;
 }
 
 .switchers {
@@ -22,7 +42,6 @@
 }
 
 .lang {
-    background: #c20c0c;
     align-items: center;
     display: flex;
 }
@@ -36,10 +55,14 @@
 .collapsed {
     width: var(--sidebar-width-collapsed);
 
-    .items {
+    .link {
         opacity: 0;
         transition: 0.3s opacity;
         width: 0;
+    }
+
+    .icon {
+        opacity: 1;
     }
 
     .switchers {
