@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import SvgToReactComponent from 'shared/assets/icons/svgToReactComponent';
 
 interface SidebarProps {
-    className?: string;
+    className?: string
 }
 
 export const Sidebar = ({ className }: SidebarProps) => {
@@ -31,7 +31,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className || ''])}>
 
             <div className={cls.items}>
-                <div>
+                <div >
                     <AppLink
                         theme={AppLinkTheme.SECONDARY}
                         to={RoutePath.home}
@@ -47,31 +47,35 @@ export const Sidebar = ({ className }: SidebarProps) => {
                         </span>
                     </AppLink>
                 </div>
-                <div className={cls.item}>
-                    <SvgToReactComponent
-                        id="blogsIcon"
-                        className={cls.icon}
-                    />
+                <div>
                     <AppLink
                         theme={AppLinkTheme.SECONDARY}
                         to={RoutePath.blogs}
-                        className={cls.link}
+                        className={cls.item}
                         isActive={isActive}
                         onClick={handleLinkClick}
-                    >
-                        {t('Блоги')}
+                    > <SvgToReactComponent
+                            id="blogsIcon"
+                            className={cls.icon}
+                        />
+                        <span className={cls.link}>
+                            {t('Блоги')}
+                        </span>
                     </AppLink>
                 </div>
-                <div className={cls.item}>
-                    <SvgToReactComponent
-                        className={cls.icon}
-                        id="postsIcon"/>
+                <div>
                     <AppLink
                         theme={AppLinkTheme.SECONDARY}
                         to={RoutePath.posts}
-                        className={cls.link}
-                    >
-                        {t('Посты')}
+                        className={cls.item}
+                        isActive={isActive}
+                        onClick={handleLinkClick}
+                    > <SvgToReactComponent
+                            className={cls.icon}
+                            id="postsIcon"/>
+                        <span className={cls.link}>
+                            {t('Посты')}
+                        </span>
                     </AppLink>
                 </div>
 
@@ -89,7 +93,6 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 data-testid="sidebar-toggle"
                 onClick={onToggle}
                 theme={ButtonTheme.BACKGROUND_INVERTED}
-                // square={true}
                 size={ButtonSize.L}
             >
                 <span

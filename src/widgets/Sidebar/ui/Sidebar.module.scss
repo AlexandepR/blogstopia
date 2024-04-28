@@ -9,6 +9,8 @@
 .items {
     gap: 20px;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     margin: 10px 15px;
     text-decoration: none;
@@ -17,21 +19,20 @@
 .item {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: row;
     margin: 5px;
 }
 
 .link{
-    display: flex;
-    opacity: 1;
-    align-items: center;
+    transition: opacity 0.3s;
 }
 
 .icon {
     fill: var(--secondary-color);
     stroke: var(--secondary-color);
     margin-right: 10px;
-    //width: 33px;
-    //height: 33px;
+    transition: opacity 0.3s;
 }
 
 .switchers {
