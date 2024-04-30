@@ -6,8 +6,8 @@ module.exports = {
     },
     extends: [
         'plugin:react/recommended',
-        // 'standard-with-typescript',
-        // 'eslint:recommended',
+        'standard-with-typescript',
+        'eslint:recommended',
         'plugin:i18next/recommended'
     ],
 
@@ -42,8 +42,8 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks'
-    // 'unused-imports'
-    // 'prettier'
+        // 'unused-imports'
+        // 'prettier'
     ],
     settings: {
         react: {
@@ -54,8 +54,8 @@ module.exports = {
         'react/jsx-indent': [2, 4], // 2 - error
         // 'react/jsx-indent-props': [2, 4],
         // indent: [2, 4],
-        '@typescript-eslint/semi': [2, 'always'],
         '@typescript-eslint/indent': [2, 4],
+        '@typescript-eslint/semi': [2, 'always'],
         'react/jsx-filename-extension': [
             2,
             {
@@ -75,6 +75,8 @@ module.exports = {
         'no-shadow': 'off',
         'no-underscore-dangle': 'off',
         'no-unused-vars': 'off',
+        'react-hooks/rules-of-hooks': 'error', //  validate dependencies of custom Hooks
+        'react-hooks/exhaustive-deps': 'error', //  validate dependencies of custom Hooks
         '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
