@@ -8,9 +8,6 @@ import { useTheme } from 'app/providers/ThemeProviders';
 import { Portal } from 'shared/ui/Portal/Portal';
 import type { ModsType } from 'shared/lib/classNames/classNames';
 import { classNames } from 'shared/lib/classNames/classNames';
-// import { useTheme } from 'src/app/providers/ThemeProviders';
-// import { classNames, ModsType } from 'src/shared/lib/classNames/classNames';
-// import { Portal } from 'src/shared/ui/Portal/Portal';
 
 interface ModalProps {
     className?: string
@@ -73,7 +70,6 @@ export const Modal = (props: ModalProps) => {
             window.removeEventListener('keydown', onKeyDown);
         };
     }, [isOpen, onKeyDown]);
-    console.log(isOpen, 'isOpen----1-----');
 
     const mods: ModsType = {
         [cls.opened]: isOpen,
