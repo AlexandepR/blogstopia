@@ -11,10 +11,20 @@ export interface componentRenderOptions {
     initialState?: Partial<StateSchema>
 }
 
-export function renderWithTranslation (component: ReactNode) {
+export function componentRender (component: ReactNode, options: componentRenderOptions) {
+    const {
+        route = '/',
+        initialState
+    } = options;
+
     return render(
-        <I18nextProvider i18n={i18nForTests}>
-            {component}
-        </I18nextProvider>
+        <StoreProvider initialState={initialState}>
+            <MemoryRouter initialEntries={[route]}>
+                {/* context for route */}
+                <I18nextProvider i18n={i18nForTests}>
+                    {component}
+                </I18nextProvider>
+            </MemoryRouter>
+        </StoreProvider>
     );
 }
