@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/className';
 import type { InputHTMLAttributes } from 'react';
-import React, { useRef, useEffect, useState, memo } from 'react';
+import React, { useLayoutEffect, useRef, useEffect, useState, memo } from 'react';
 import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<
@@ -41,7 +41,7 @@ export const Input = memo((props: InputProps) => {
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         if (context) {
-            context.font = getComputedStyle(ref.current!).font;
+            context.font = getComputedStyle(ref.current!).font; // Получаем шрифт инпута
             return context.measureText(text).width;
         }
         return 0;
@@ -49,7 +49,7 @@ export const Input = memo((props: InputProps) => {
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
-        setCaretPosition(measureTextWidth(e.target.value));
+        // setCaretPosition(measureTextWidth(e.target.value));
     };
 
     const onFocus = () => {
@@ -58,10 +58,12 @@ export const Input = memo((props: InputProps) => {
     const onBlur = () => {
         setIsFocused(false);
     };
-    const onSelect = (e: any) => {
+    const onSelect = (e: React.SyntheticEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
         const textBeforeCaret = target.value.substring(0, target.selectionStart ?? 0);
-        setCaretPosition(measureTextWidth(textBeforeCaret));
+        requestAnimationFrame(() => {
+            setCaretPosition(measureTextWidth(textBeforeCaret));
+        });
     };
 
     return (
