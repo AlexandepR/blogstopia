@@ -3,10 +3,12 @@
  * https://jestjs.io/docs/configuration
  */
 
-// module.exports = {
-import * as path from 'path';
+import path from 'path';
 
-export default {
+const config = {
+    globals: {
+        __IS_DEV__: true
+    },
     clearMocks: true,
     testEnvironment: 'jsdom',
     coveragePathIgnorePatterns: [
@@ -33,8 +35,6 @@ export default {
     testMatch: [
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'
     ],
-    rootDir: '../..',
-    global: {
-        __IS_DEV__: true
-    }
+    rootDir: '../../'
 };
+module.exports = config;

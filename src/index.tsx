@@ -7,18 +7,21 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ErrorBoundary } from './app/providers/ErrorBoundary';
 import { ThemeProvider } from './app/providers/ThemeProviders';
+import { StoreProvider } from 'app/providers/StoreProvider';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root')!
 );
 root.render(
-    <BrowserRouter>
-        <ErrorBoundary>
-            <ThemeProvider>
-                <App />
-            </ThemeProvider>
-        </ErrorBoundary>
-    </BrowserRouter>
+    <StoreProvider>
+        <BrowserRouter>
+            <ErrorBoundary>
+                <ThemeProvider>
+                    <App />
+                </ThemeProvider>
+            </ErrorBoundary>
+        </BrowserRouter>
+    </StoreProvider>
 );
 
 reportWebVitals();

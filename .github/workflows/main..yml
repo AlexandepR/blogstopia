@@ -24,6 +24,6 @@ jobs:
       - name: linting typescript
         run: yarn run lint:ts
       - name: linting css
-        run:  yarn run lint:scss
+        run: yarn run lint:scss
       - name: unit testing
         run: yarn run test:unit
