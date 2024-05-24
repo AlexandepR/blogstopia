@@ -14,6 +14,7 @@
       "shared/*": ["shared/*"],
       "widgets/*": ["widgets/*"],
       "features/*": ["features/*"],
+      "entities/*": ["entities/*"],
       "components/*": ["components/*"]
     },
     "esModuleInterop": true,
