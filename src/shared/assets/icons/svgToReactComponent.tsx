@@ -1,6 +1,5 @@
 import React from 'react';
-import { classNames } from 'shared/lib/classNames/className';
-import cls from 'shared/ui/LangSwitcher/LangSwitcher.module.scss';
+import { classNames } from 'shared/lib/classNames/classNames';
 
 interface Props {
     id: string
