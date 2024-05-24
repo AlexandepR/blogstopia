@@ -8,9 +8,13 @@ interface StoreProviderProps {
     initialState?: Partial<StateSchema>
 }
 
-export const StoreProvider = ({ children }: StoreProviderProps) => {
-    const store = createReduxStore();
+export const StoreProvider = (props: StoreProviderProps) => {
+    const {
+        children,
+        initialState
+    } = props;
 
+    const store = createReduxStore(initialState as StateSchema);
     return (
         <Provider store={store}>
             {children}

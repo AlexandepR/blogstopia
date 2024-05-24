@@ -6,7 +6,7 @@ import { useTheme } from './providers/ThemeProviders/lib/useTheme';
 import { Sidebar } from 'widgets/Sidebar';
 import { Navbar } from 'widgets/Navbar';
 import { AppRouter } from 'app/providers/router';
-import { classNames } from 'shared/lib/classNames/className';
+import { classNames } from 'shared/lib/classNames/classNames';
 
 function App () {
     const { theme } = useTheme();
