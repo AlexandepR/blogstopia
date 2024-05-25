@@ -20,11 +20,11 @@ const HomePage = () => {
     const { t } = useTranslation('');
 
     useEffect(() => {
-        axios
-            .get('https://l1bloggers.vercel.app/blogs?pageSize=6')
-            .then(data => {
-                setBlog(data.data.items);
-            });
+        // axios
+        //     .get('https://l1bloggers.vercel.app/blogs?pageSize=6')
+        //     .then(data => {
+        //         setBlog(data.data.items);
+        //     });
     }, []);
 
     // const blogs = blog.map((obj:any,index:number) => (

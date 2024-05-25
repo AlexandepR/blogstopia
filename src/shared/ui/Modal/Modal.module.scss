@@ -23,6 +23,7 @@
   transition: 0.3s transform;
   transform: scale(0.5);
   max-width: 60%;
+  box-shadow: 0 1px 15px 2px var(--bg-shadow-color);
 }
 
 .opened {

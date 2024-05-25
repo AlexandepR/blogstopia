@@ -15,7 +15,7 @@ const BlogsPage = () => {
     };
 
     useEffect(() => {
-        fetchData();
+        // fetchData();
         // const data = axios
         //     .get('https://l1bloggers.vercel.app/blogs')
         // .then((data) => {

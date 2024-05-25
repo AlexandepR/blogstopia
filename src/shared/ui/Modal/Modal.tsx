@@ -88,7 +88,7 @@ export const Modal = (props: ModalProps) => {
                         className={cls.content}
                         onClick={onContentClick}
                     >
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.  {children}
+                        {children}
                     </div>
                 </div>
             </div>

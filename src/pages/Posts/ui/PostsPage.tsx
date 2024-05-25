@@ -6,11 +6,11 @@ const PostsPage = () => {
     const [posts, setPosts] = useState<any>([]);
 
     useEffect(() => {
-        const data = axios
-            .get('https://l1bloggers.vercel.app/posts?pageSize=6')
-            .then((data) => {
-                setPosts(data.data.items);
-            });
+        // const data = axios
+        //     .get('https://l1bloggers.vercel.app/posts?pageSize=6')
+        //     .then((data) => {
+        //         setPosts(data.data.items);
+        //     });
     }, []);
 
     return (
