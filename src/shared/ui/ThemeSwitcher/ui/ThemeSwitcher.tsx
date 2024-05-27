@@ -5,7 +5,7 @@ import { Theme, useTheme } from 'app/providers/ThemeProviders';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 
 interface ThemeSwitcherProps {
-    className?: string
+    className?: string;
 }
 
 export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
@@ -14,12 +14,13 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
         <Button
             theme={ButtonTheme.CLEAR}
             className={classNames(cls.ThemeSwitcher, {}, [className])}
-            onClick={toggleTheme}>
-            {
-                theme === Theme.DARK
-                    ? <SvgToReactComponent id="lightIcon"/>
-                    : <SvgToReactComponent id="nightIcon"/>
-            }
+            onClick={toggleTheme}
+        >
+            {theme === Theme.DARK ? (
+                <SvgToReactComponent id="lightIcon" />
+            ) : (
+                <SvgToReactComponent id="nightIcon" />
+            )}
         </Button>
     );
 };

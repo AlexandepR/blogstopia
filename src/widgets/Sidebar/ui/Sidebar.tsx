@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import SvgToReactComponent from 'shared/assets/icons/svgToReactComponent';
 
 interface SidebarProps {
-    className?: string
+    className?: string;
 }
 
 export const Sidebar = ({ className }: SidebarProps) => {
@@ -19,7 +19,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
     const { t } = useTranslation('');
 
     const onToggle = useCallback(() => {
-        setCollapsed(prev => !prev);
+        setCollapsed((prev) => !prev);
     }, []);
     const handleLinkClick = () => {
         setIsActive(true);
@@ -28,17 +28,20 @@ export const Sidebar = ({ className }: SidebarProps) => {
     return (
         <div
             data-testid="sidebar"
-            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className || ''])}>
-
+            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
+                className || '',
+            ])}
+        >
             <div className={cls.items}>
-                <div >
+                <div>
                     <AppLink
                         theme={AppLinkTheme.SECONDARY}
                         to={RoutePath.home}
                         className={cls.item}
                         isActive={isActive}
                         onClick={handleLinkClick}
-                    > <SvgToReactComponent
+                    >
+                        <SvgToReactComponent
                             id="homeIcon"
                             className={cls.icon}
                         />
@@ -54,13 +57,12 @@ export const Sidebar = ({ className }: SidebarProps) => {
                         className={cls.item}
                         isActive={isActive}
                         onClick={handleLinkClick}
-                    > <SvgToReactComponent
+                    >
+                        <SvgToReactComponent
                             id="blogsIcon"
                             className={cls.icon}
                         />
-                        <span className={cls.link}>
-                            {t('Блоги')}
-                        </span>
+                        <span className={cls.link}>{t('Блоги')}</span>
                     </AppLink>
                 </div>
                 <div>
@@ -70,12 +72,12 @@ export const Sidebar = ({ className }: SidebarProps) => {
                         className={cls.item}
                         isActive={isActive}
                         onClick={handleLinkClick}
-                    > <SvgToReactComponent
+                    >
+                        <SvgToReactComponent
                             className={cls.icon}
-                            id="postsIcon"/>
-                        <span className={cls.link}>
-                            {t('Посты')}
-                        </span>
+                            id="postsIcon"
+                        />
+                        <span className={cls.link}>{t('Посты')}</span>
                     </AppLink>
                 </div>
 
@@ -86,7 +88,6 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 {/* > */}
                 {/*    {t('Тест')} */}
                 {/* </AppLink> */}
-
             </div>
             <Button
                 className={classNames(cls.collapsedBtn)}
@@ -95,13 +96,13 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 theme={ButtonTheme.BACKGROUND_INVERTED}
                 size={ButtonSize.L}
             >
-                <span
-                    className={classNames(cls.collapsedSign)}
-                >{collapsed ? '>' : '<'}</span>
+                <span className={classNames(cls.collapsedSign)}>
+                    {collapsed ? '>' : '<'}
+                </span>
             </Button>
             <div className={cls.switchers}>
-                <ThemeSwitcher className={cls.themeSwitch}/>
-                <LangSwitcher className={cls.lang} short={collapsed}/>
+                <ThemeSwitcher className={cls.themeSwitch} />
+                <LangSwitcher className={cls.lang} short={collapsed} />
             </div>
         </div>
     );
