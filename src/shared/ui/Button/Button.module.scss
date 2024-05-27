@@ -43,8 +43,13 @@
   padding: 0;
 }
 
-.disabled{
-  // test
+.disabled {
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 0.4;
+  }
+
 }
 
 .square.size_m {
@@ -73,9 +78,3 @@
 .size_xl {
   font: var(--font-xl);
 }
-
-//  .ThemeSwitcher {
-//  background-color: red;
-//  left: 10px;
-//  bottom: 20px;
-//  }

@@ -8,6 +8,8 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import path from 'path';
 import CopyPlugin from 'copy-webpack-plugin';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export function buildPlugins (options: BuildOptions): webpack.WebpackPluginInstance[] {
     const { paths, mode, analyzer } = options;
@@ -21,9 +23,9 @@ export function buildPlugins (options: BuildOptions): webpack.WebpackPluginInsta
             favicon: path.resolve(paths.public, 'favicon.ico')
         }),
         new webpack.ProgressPlugin(),
-
         new webpack.DefinePlugin({
-            __IS_DEV__: JSON.stringify(isDev)
+            __IS_DEV__: JSON.stringify(isDev),
+            __API__: JSON.stringify(process.env.__API__)
         }),
         new CircularDependencyPlugin({ // find cyclic dependencies in the project
             exclude: /node_modules/,
