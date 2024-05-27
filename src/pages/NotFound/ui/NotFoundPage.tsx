@@ -3,7 +3,7 @@ import cls from 'pages/NotFound/ui/NotFoundPage.module.scss';
 import { useTranslation } from 'react-i18next';
 
 interface NotFoundPageProps {
-    className?: string
+    className?: string;
 }
 
 export const NotFoundPage = ({ className }: NotFoundPageProps) => {

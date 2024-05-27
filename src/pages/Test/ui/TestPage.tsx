@@ -4,9 +4,7 @@ import TestForm from 'pages/Test/components/form';
 // import TestForm from 'src/pages/Test/components/form';
 
 const TestPage = () => {
-    return (
-        <TestForm />
-    );
+    return <TestForm />;
 };
 
 export default TestPage;

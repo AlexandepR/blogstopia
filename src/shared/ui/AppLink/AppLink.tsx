@@ -7,16 +7,16 @@ import { classNames } from 'shared/lib/classNames/classNames';
 
 export enum AppLinkTheme {
     PRIMARY = 'primary',
-    SECONDARY = 'secondary'
+    SECONDARY = 'secondary',
 }
 
 interface AppLinkProps extends LinkProps {
-    children: React.ReactNode
-    theme: AppLinkTheme
-    to: string
-    className?: string
-    isActive?: boolean
-    onClick?: () => void
+    children: React.ReactNode;
+    theme: AppLinkTheme;
+    to: string;
+    className?: string;
+    isActive?: boolean;
+    onClick?: () => void;
 }
 
 export const AppLink: FC<AppLinkProps> = (props) => {
@@ -31,7 +31,9 @@ export const AppLink: FC<AppLinkProps> = (props) => {
     return (
         <Link
             to={to}
-            className={classNames(cls.AppLink, { [cls[theme]]: true }, [className || ''])}
+            className={classNames(cls.AppLink, { [cls[theme]]: true }, [
+                className || '',
+            ])}
             {...otherProps}
         >
             {children}

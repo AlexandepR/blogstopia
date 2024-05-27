@@ -9,9 +9,7 @@ import { ErrorBoundary } from './app/providers/ErrorBoundary';
 import { ThemeProvider } from './app/providers/ThemeProviders';
 import { StoreProvider } from 'app/providers/StoreProvider';
 
-const root = ReactDOM.createRoot(
-    document.getElementById('root')!
-);
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
     <StoreProvider>
         <BrowserRouter>
@@ -21,7 +19,7 @@ root.render(
                 </ThemeProvider>
             </ErrorBoundary>
         </BrowserRouter>
-    </StoreProvider>
+    </StoreProvider>,
 );
 
 reportWebVitals();

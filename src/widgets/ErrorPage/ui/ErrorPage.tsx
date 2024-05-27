@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button/Button';
 
 interface ErrorPageProps {
-    className?: string
+    className?: string;
 }
 
 export const ErrorPage = ({ className }: ErrorPageProps) => {
@@ -16,11 +16,7 @@ export const ErrorPage = ({ className }: ErrorPageProps) => {
     return (
         <div className={classNames(cls.ErrorPage, {}, [className || ''])}>
             <p>{t('Произошла непредвиденная ошибка')}</p>
-            <Button
-                onClick={reloadPage}
-            >
-                {t('обновить страницу')}
-            </Button>
+            <Button onClick={reloadPage}>{t('обновить страницу')}</Button>
         </div>
     );
 };

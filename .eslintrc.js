@@ -2,13 +2,15 @@ module.exports = {
     env: {
         browser: true,
         es2021: true,
-        jest: true
+        jest: true,
     },
     extends: [
         'plugin:react/recommended',
         'standard-with-typescript',
         'eslint:recommended',
-        'plugin:i18next/recommended'
+        'plugin:i18next/recommended',
+        // 'prettier'
+        'plugin:prettier/recommended',
     ],
 
     overrides: [
@@ -17,52 +19,50 @@ module.exports = {
                 '.eslintrc.js',
                 '.eslintrc.cjs',
                 '**/src/**/*.{test,stories}.{ts,tsx}',
-                './src/**/*'
+                './src/**/*',
             ],
             rules: {
                 'i18next/no-literal-string': 'warn',
-                'max-len': 'off'
+                'max-len': 'off',
             },
             parserOptions: {
-                sourceType: 'script'
-            }
-        }
+                sourceType: 'script',
+            },
+        },
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
-            jsx: true
+            jsx: true,
         },
         ecmaVersion: 'latest',
-        sourceType: 'module'
+        sourceType: 'module',
     },
     ignorePatterns: ['node_modules'],
     plugins: [
         'react',
         '@typescript-eslint',
         'i18next',
-        'react-hooks'
-        // 'unused-imports'
-        // 'prettier'
+        'react-hooks',
+        'prettier',
     ],
     settings: {
         react: {
-            version: 'detect'
-        }
+            version: 'detect',
+        },
     },
     rules: {
-        'react/jsx-indent': [2, 4], // 2 - error
+        // 'react/jsx-indent': [2, 4], // 2 - error
         // 'react/jsx-indent-props': [2, 4],
         // indent: [2, 4],
-        '@typescript-eslint/indent': [2, 4],
-        '@typescript-eslint/semi': [2, 'always'],
+        // '@typescript-eslint/indent': [2, 4],
+        // '@typescript-eslint/semi': [2, 'always'],
         'react/jsx-filename-extension': [
             2,
             {
-                extensions: [
-                    '.js', '.jsx', '.tsx'
-                ]
-            }],
+                extensions: ['.js', '.jsx', '.tsx'],
+            },
+        ],
         'import/extensions': 'off',
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
@@ -74,10 +74,10 @@ module.exports = {
         'react/function-component-definition': 'off',
         'no-shadow': 'off',
         'no-underscore-dangle': 'off',
-        'no-unused-vars': 'off',
+        'no-unused-vars': 'warn',
         'react-hooks/rules-of-hooks': 'error', //  validate dependencies of custom Hooks
         'react-hooks/exhaustive-deps': 'error', //  validate dependencies of custom Hooks
-        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'warn',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
         '@typescript-eslint/prefer-nullish-coalescing': 'off',
@@ -89,8 +89,8 @@ module.exports = {
         '@typescript-eslint/consistent-type-imports': [
             'error',
             {
-                prefer: 'type-imports'
-            }
+                prefer: 'type-imports',
+            },
         ],
         'i18next/no-literal-string': [
             'error',
@@ -111,15 +111,17 @@ module.exports = {
                     'color',
                     'variant',
                     'size',
-                    'wrap'
-                ]
-            }
-        ]
+                    'wrap',
+                ],
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,
         __API__: true,
+        API_URL: true,
+        // REACT_APP_API_URL: true,
         __PROJECT__: true,
-        __PLATFORM__: true
-    }
+        __PLATFORM__: true,
+    },
 };

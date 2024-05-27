@@ -3,7 +3,7 @@ import cls from 'shared/ui/PageLoader/PageLoader.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 
 interface PageLoaderProps {
-    className?: string
+    className?: string;
 }
 
 export const PageLoader = ({ className }: PageLoaderProps) => {

@@ -7,15 +7,15 @@ import type { StateSchema } from 'app/providers/StoreProvider';
 import { StoreProvider } from 'app/providers/StoreProvider';
 
 export interface componentRenderOptions {
-    route?: string
-    initialState?: Partial<StateSchema>
+    route?: string;
+    initialState?: Partial<StateSchema>;
 }
 
-export function componentRender (component: ReactNode, options: componentRenderOptions = {}) {
-    const {
-        route = '/',
-        initialState
-    } = options;
+export function componentRender(
+    component: ReactNode,
+    options: componentRenderOptions = {},
+) {
+    const { route = '/', initialState } = options;
 
     return render(
         <StoreProvider initialState={initialState}>
@@ -24,6 +24,6 @@ export function componentRender (component: ReactNode, options: componentRenderO
                     {component}
                 </I18nextProvider>
             </MemoryRouter>
-        </StoreProvider>
+        </StoreProvider>,
     );
 }

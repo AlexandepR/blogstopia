@@ -5,8 +5,8 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { classNames } from 'shared/lib/classNames/classNames';
 
 interface LangSwitcherProps {
-    className?: string
-    short: boolean
+    className?: string;
+    short: boolean;
 }
 
 export const LangSwitcher = ({ className, short }: LangSwitcherProps) => {
@@ -27,10 +27,22 @@ export const LangSwitcher = ({ className, short }: LangSwitcherProps) => {
             theme={ButtonTheme.CLEAR}
             onClick={toggle}
         >
-            <span className={classNames(cls.animatedText, { [cls.visibleShort]: short }, [className || ''])}>
+            <span
+                className={classNames(
+                    cls.animatedText,
+                    { [cls.visibleShort]: short },
+                    [className || ''],
+                )}
+            >
                 {t('Короткий язык')}
             </span>
-            <span className={classNames(cls.animatedText, { [cls.visibleShort]: !short }, [className || ''])}>
+            <span
+                className={classNames(
+                    cls.animatedText,
+                    { [cls.visibleShort]: !short },
+                    [className || ''],
+                )}
+            >
                 {t('Язык')}
             </span>
         </Button>

@@ -11,7 +11,7 @@ export enum AppRoutes {
     BLOGS = 'blogs',
     POSTS = 'posts',
     TEST_PAGE = 'test',
-    NOT_FOUND = 'not_found'
+    NOT_FOUND = 'not_found',
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
@@ -19,28 +19,28 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.BLOGS]: '/blogs',
     [AppRoutes.POSTS]: '/posts',
     [AppRoutes.TEST_PAGE]: '/test',
-    [AppRoutes.NOT_FOUND]: '*'
+    [AppRoutes.NOT_FOUND]: '*',
 };
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
     [AppRoutes.HOME]: {
         path: RoutePath.home,
-        element: <HomePage />
+        element: <HomePage />,
     },
     [AppRoutes.BLOGS]: {
         path: RoutePath.blogs,
-        element: <BlogsPage />
+        element: <BlogsPage />,
     },
     [AppRoutes.POSTS]: {
         path: RoutePath.posts,
-        element: <PostsPage />
+        element: <PostsPage />,
     },
     [AppRoutes.TEST_PAGE]: {
         path: RoutePath.test,
-        element: <TestPage />
+        element: <TestPage />,
     },
     [AppRoutes.NOT_FOUND]: {
         path: RoutePath.not_found,
-        element: <NotFoundPage />
-    }
+        element: <NotFoundPage />,
+    },
 };

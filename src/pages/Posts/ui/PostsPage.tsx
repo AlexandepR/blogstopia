@@ -27,12 +27,12 @@ const PostsPage = () => {
             <div className="content_main_post">
                 {posts
                     ? posts.map((p: any) => (
-                        <div key={p.id} className="content_post_list">
-                            <h3>{p.title}</h3>
-                            <p>{p.shortDescription}</p>
-                            <p>{p.createdAt.slice(0, 10)}</p>
-                        </div>
-                    ))
+                          <div key={p.id} className="content_post_list">
+                              <h3>{p.title}</h3>
+                              <p>{p.shortDescription}</p>
+                              <p>{p.createdAt.slice(0, 10)}</p>
+                          </div>
+                      ))
                     : 'loading'}
             </div>
         </div>

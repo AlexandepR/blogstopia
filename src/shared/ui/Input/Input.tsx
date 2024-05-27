@@ -1,18 +1,26 @@
 import type { InputHTMLAttributes } from 'react';
-import React, { useLayoutEffect, useRef, useEffect, useState, memo } from 'react';
+import React, {
+    useLayoutEffect,
+    useRef,
+    useEffect,
+    useState,
+    memo,
+} from 'react';
 import cls from './Input.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 
 type HTMLInputProps = Omit<
-InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>;
+    InputHTMLAttributes<HTMLInputElement>,
+    'value' | 'onChange'
+>;
 
 export interface InputProps extends HTMLInputProps {
-    className?: string
-    autofocus?: boolean
-    placeholder?: string
-    value?: string
-    type?: string
-    onChange?: (value: string) => void
+    className?: string;
+    autofocus?: boolean;
+    placeholder?: string;
+    value?: string;
+    type?: string;
+    onChange?: (value: string) => void;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -60,7 +68,10 @@ export const Input = memo((props: InputProps) => {
     };
     const onSelect = (e: React.SyntheticEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
-        const textBeforeCaret = target.value.substring(0, target.selectionStart ?? 0);
+        const textBeforeCaret = target.value.substring(
+            0,
+            target.selectionStart ?? 0,
+        );
         requestAnimationFrame(() => {
             setCaretPosition(measureTextWidth(textBeforeCaret));
         });

@@ -3,12 +3,17 @@ import '../../../app/styles/Home.css';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
-export type BlogsTestType = Array<Record<string, {
-    id: string
-    name: string
-    description: string
-    websiteUrl: string
-}>>;
+export type BlogsTestType = Array<
+    Record<
+        string,
+        {
+            id: string;
+            name: string;
+            description: string;
+            websiteUrl: string;
+        }
+    >
+>;
 // const requestData = () => {
 //     return axios
 //         .get('https://l1bloggers.vercel.app/blogs')

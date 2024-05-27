@@ -7,7 +7,7 @@ import { Modal } from 'shared/ui/Modal/Modal';
 import { LoginModal } from 'features/AuthByUsername';
 
 interface NavbarProps {
-    className?: string
+    className?: string;
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
