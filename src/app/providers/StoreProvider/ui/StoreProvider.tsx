@@ -4,20 +4,13 @@ import { createReduxStore } from 'app/providers/StoreProvider/config/store';
 import type { StateSchema } from 'app/providers/StoreProvider';
 
 interface StoreProviderProps {
-    children?: ReactNode
-    initialState?: Partial<StateSchema>
+    children?: ReactNode;
+    initialState?: Partial<StateSchema>;
 }
 
 export const StoreProvider = (props: StoreProviderProps) => {
-    const {
-        children,
-        initialState
-    } = props;
+    const { children, initialState } = props;
 
     const store = createReduxStore(initialState as StateSchema);
-    return (
-        <Provider store={store}>
-            {children}
-        </Provider>
-    );
+    return <Provider store={store}>{children}</Provider>;
 };
