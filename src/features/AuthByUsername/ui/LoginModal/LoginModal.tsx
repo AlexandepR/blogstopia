@@ -3,32 +3,37 @@ import { Modal } from 'shared/ui/Modal/Modal';
 import { LoginForm } from '../LoginForm/LoginForm';
 import cls from './LoginModal.module.scss';
 import { useState } from 'react';
-import { RegistrationForm } from 'features/AuthByUsername/ui/RegistrationForm/RegistrationForm';
 import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
+import { PasswordReminder } from '../PasswordReminder/PasswordReminder';
+import { RegistrationConfirmForm } from '../RegistrationConfirmForm/RegistrationConfirmForm';
+import { RegistrationForm } from 'features/RegistrationByUserName';
 
 export interface LoginModalProps {
-    className?: string
-    isOpen: boolean
-    onClose: () => void
+    className?: string;
+    isOpen: boolean;
+    onClose: () => void;
 }
+type ViewType = 'login' | 'register' | 'registerConfirm' | 'forgotPassword';
 
 export const LoginModal = (props: LoginModalProps) => {
-    const [isLoginView, setIsLoginView] = useState(true);
+    const [view, setView] = useState<ViewType>('login');
     const { t } = useTranslation();
+    const { className, isOpen, onClose } = props;
 
     const switchToLogin = () => {
-        setIsLoginView(true);
+        setView('login');
     };
     const switchToRegistration = () => {
-        setIsLoginView(false);
+        setView('register');
+    };
+    const switchToForgotPassword = () => {
+        setView('forgotPassword');
+    };
+    const RegistrationConfirm = () => {
+        setView('registerConfirm');
     };
 
-    const {
-        className,
-        isOpen,
-        onClose
-    } = props;
     return (
         <Modal
             className={classNames(cls.LoginModal, {}, [className])}
@@ -39,22 +44,45 @@ export const LoginModal = (props: LoginModalProps) => {
             <div>
                 <div className={cls.btnWrapper}>
                     <Button
-                        style={isLoginView ? undefined : { fontWeight: 'bold' }}
-                        className={cls.btn}
-                        onClick={switchToRegistration}
-                    >{t('Войти')}
-                    </Button>
-                    <Button
-                        style={isLoginView ? { fontWeight: 'bold' } : undefined}
+                        style={
+                            view === 'login'
+                                ? { fontWeight: 'bold' }
+                                : undefined
+                        }
                         className={cls.btn}
                         onClick={switchToLogin}
-                    >{t('Регистрация')}
+                    >
+                        {t('Войти')}
+                    </Button>
+                    <Button
+                        style={
+                            view === 'register'
+                                ? { fontWeight: 'bold' }
+                                : undefined
+                        }
+                        className={cls.btn}
+                        onClick={switchToRegistration}
+                    >
+                        {t('Регистрация')}
                     </Button>
                 </div>
-                { isLoginView
-                    ? <RegistrationForm />
-                    : <LoginForm />
-                }
+                {view === 'login' && (
+                    <LoginForm
+                        switchToForgotPassword={switchToForgotPassword}
+                    />
+                )}
+                {view === 'register' && (
+                    <RegistrationForm onSend={switchToForgotPassword} />
+                )}
+                {view === 'forgotPassword' && (
+                    <PasswordReminder
+                        onBack={switchToLogin}
+                        onSend={RegistrationConfirm}
+                    />
+                )}
+                {view === 'registerConfirm' && (
+                    <RegistrationConfirmForm onBack={switchToForgotPassword} />
+                )}
             </div>
         </Modal>
     );
