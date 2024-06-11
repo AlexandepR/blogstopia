@@ -9,17 +9,20 @@ import { memo, useCallback } from 'react';
 import { registrationActions } from '../../model/slice/registrationSlice';
 import { getRegistrationState } from '../../model/selectors/getRegistrationState/getRegistrationState';
 import { registrationByUsername } from '../../model/services/registrationByUsername/registrationByUsername';
+import { ConfirmCodeForm } from 'features/ConfirmByCode/ui/ConfirmCodeForm';
+import { RegistrationStep } from 'features/RegistrationByUserName/model/types/registrationSchema';
 
 interface RegistrationFormProps {
     className?: string;
     onSend: () => void;
+    onClose: () => void;
 }
 
 export const RegistrationForm = memo(
-    ({ className, onSend }: RegistrationFormProps) => {
+    ({ className, onSend, onClose }: RegistrationFormProps) => {
         const { t } = useTranslation();
         const dispatch = useDispatch<any>();
-        const { login, password, email, isLoading, error } =
+        const { login, password, email, isLoading, currentStep, error } =
             useSelector(getRegistrationState);
 
         const onChangeLogin = useCallback(
@@ -47,59 +50,75 @@ export const RegistrationForm = memo(
             dispatch(registrationByUsername({ login, email, password }));
         }, [dispatch, login, email, password]);
 
+        const switchToRegistration = () => {
+            dispatch(
+                registrationActions.setIsSendConfirmCode(
+                    RegistrationStep.Registration,
+                ),
+            );
+        };
+
         return (
             <div className={classNames(cls.RegistrationForm, {}, [className])}>
-                <div>
-                    <div className={cls.content}>
-                        <div className={cls.item}>
-                            <label>{t('Логин')}</label>
-                            <Input
-                                autofocus
-                                type="text"
-                                className={cls.input}
-                                value={login}
-                                onChange={onChangeLogin}
-                            />
+                {currentStep === RegistrationStep.Registration && (
+                    <div>
+                        <div className={cls.content}>
+                            <div className={cls.item}>
+                                <label>{t('Логин')}</label>
+                                <Input
+                                    autofocus
+                                    type="text"
+                                    className={cls.input}
+                                    value={login}
+                                    onChange={onChangeLogin}
+                                />
+                            </div>
+                            <div className={cls.item}>
+                                <label>{t('Почта')}</label>
+                                <Input
+                                    type="text"
+                                    className={cls.input}
+                                    value={email}
+                                    onChange={onChangeEmail}
+                                />
+                            </div>
+                            <div className={cls.item}>
+                                <label>{t('Пароль')}</label>
+                                <Input
+                                    type="password"
+                                    className={cls.inputPass}
+                                    value={password}
+                                    onChange={onChangePassword}
+                                />
+                            </div>
+                            {error && (
+                                <Text
+                                    className={cls.error}
+                                    theme={TextTheme.ERROR}
+                                    title={t('Ошибка')}
+                                    text={error}
+                                />
+                            )}
                         </div>
-                        <div className={cls.item}>
-                            <label>{t('Почта')}</label>
-                            <Input
-                                type="text"
-                                className={cls.input}
-                                value={email}
-                                onChange={onChangeEmail}
-                            />
+                        <div className={cls.btnWrapper}>
+                            <Button
+                                disabled={!!isLoading}
+                                onClick={onRegistrationClick}
+                            >
+                                {t('Регистрация')}
+                            </Button>
+                            <Button onClick={onSend} className={cls.btnForgot}>
+                                {t('Выслать код повторно?')}
+                            </Button>
                         </div>
-                        <div className={cls.item}>
-                            <label>{t('Пароль')}</label>
-                            <Input
-                                type="password"
-                                className={cls.inputPass}
-                                value={password}
-                                onChange={onChangePassword}
-                            />
-                        </div>
-                        {/* {error && ( */}
-                        <Text
-                            className={cls.error}
-                            theme={TextTheme.ERROR}
-                            title={t('Ошибка')}
-                            text={t('Логин или Email уже существует')}
-                        />
-                        {/* )} */}
                     </div>
-                    <div className={cls.btnWrapper}>
-                        <Button
-                            disabled={!!isLoading}
-                            onClick={onRegistrationClick}
-                        >
-                            {t('Регистрация')}
-                        </Button>
-                        <Button onClick={onSend} className={cls.btnForgot}>
-                            {t('Выслать код повторно?')}
-                        </Button>
-                    </div>
-                </div>
+                )}
+                {currentStep === RegistrationStep.Confirm && (
+                    <ConfirmCodeForm
+                        onBack={switchToRegistration}
+                        onClose={onClose}
+                    />
+                )}
             </div>
         );
     },

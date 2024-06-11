@@ -16,6 +16,9 @@ const confirmCodeSlice = createSlice({
         setConfirmCode: (state, action: PayloadAction<string>) => {
             state.code = action.payload;
         },
+        setIsConfirm: (state, action: PayloadAction<boolean>) => {
+            state.isConfirm = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder

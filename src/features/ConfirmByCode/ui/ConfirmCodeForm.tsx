@@ -9,12 +9,18 @@ import { confirmActions } from '../model/slice/confirmSlice';
 import { confirmByCode } from '../model/services/confirmByCode';
 import { getConfirmCode } from '../model/selectors/getConfirmCode';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { registrationActions } from 'features/RegistrationByUserName/model/slice/registrationSlice';
+import { RegistrationStep } from 'features/RegistrationByUserName/model/types/registrationSchema';
 
 interface RegistrationConfirmFormProps {
     onBack: () => void;
+    onClose: () => void;
 }
 
-export const ConfirmCodeForm = ({ onBack }: RegistrationConfirmFormProps) => {
+export const ConfirmCodeForm = ({
+    onBack,
+    onClose,
+}: RegistrationConfirmFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch<any>();
     const { code, error, isConfirm } = useSelector(getConfirmCode);
@@ -25,9 +31,20 @@ export const ConfirmCodeForm = ({ onBack }: RegistrationConfirmFormProps) => {
         },
         [dispatch],
     );
+
     const onConfirmCodeClick = useCallback(() => {
         dispatch(confirmByCode({ code }));
     }, [dispatch, code]);
+
+    const onCloseConfirmForm = useCallback(() => {
+        dispatch(confirmActions.setIsConfirm(false));
+        dispatch(
+            registrationActions.setIsSendConfirmCode(
+                RegistrationStep.Registration,
+            ),
+        );
+        onClose();
+    }, [dispatch, onClose]);
 
     return !isConfirm ? (
         <div className={classNames(cls.RegistrationConfirm, {}, [])}>
@@ -63,8 +80,8 @@ export const ConfirmCodeForm = ({ onBack }: RegistrationConfirmFormProps) => {
                 <Text title={t('Поздравляем!')} />
                 <Text text={t('Код успешно подтвержден')} />
             </div>
-            <Button className={cls.btnWrapper} onClick={onBack}>
-                {t('Назад')}
+            <Button className={cls.btnWrapper} onClick={onCloseConfirmForm}>
+                {t('Закрыть')}
             </Button>
         </div>
     );
