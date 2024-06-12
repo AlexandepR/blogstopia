@@ -22,7 +22,7 @@ export type BlogsTestType = Array<
 // }
 const HomePage = () => {
     const [blog, setBlog] = useState<any>([]);
-    const { t } = useTranslation('');
+    const { t } = useTranslation();
 
     useEffect(() => {
         // axios
