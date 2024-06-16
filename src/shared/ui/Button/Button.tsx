@@ -23,6 +23,12 @@ export enum ButtonSize {
     XL = 'size_xl',
 }
 
+export enum Hover {
+    CLEAR = 'hover_clear',
+    UNDERLINE = 'hover_underline',
+    SHADOWS = 'hover_shadows',
+}
+
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     theme?: ButtonTheme;
@@ -31,6 +37,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean;
     children?: ReactNode;
     tags?: any;
+    hover?: Hover;
 }
 
 export const Button = memo((props: ButtonProps) => {
@@ -41,6 +48,7 @@ export const Button = memo((props: ButtonProps) => {
         square,
         disabled,
         size = ButtonSize.M,
+        hover = Hover.CLEAR,
         ...otherProps
     } = props;
 
@@ -49,6 +57,8 @@ export const Button = memo((props: ButtonProps) => {
         [cls.square]: square,
         [cls[size]]: true,
         [cls.disabled]: disabled,
+        [cls[hover]]: true,
+        [cls.hover_common]: true,
     };
 
     return (
