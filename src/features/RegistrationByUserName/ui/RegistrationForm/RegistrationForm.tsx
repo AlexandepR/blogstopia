@@ -1,9 +1,9 @@
 import cls from './RegistrationForm.module.scss';
 import { Input } from 'shared/ui/Input/Input';
-import { Button } from 'shared/ui/Button/Button';
+import { Button, ButtonSize, Hover } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import { useDispatch, useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { registrationActions } from '../../model/slice/registrationSlice';
@@ -13,13 +13,14 @@ import { ConfirmCodeForm } from 'features/ConfirmByCode/ui/ConfirmCodeForm';
 import { RegistrationStep } from 'features/RegistrationByUserName/model/types/registrationSchema';
 
 interface RegistrationFormProps {
-    className?: string;
     onSend: () => void;
+    onConfirm: () => void;
     onClose: () => void;
+    className?: string;
 }
 
 export const RegistrationForm = memo(
-    ({ className, onSend, onClose }: RegistrationFormProps) => {
+    ({ className, onSend, onClose, onConfirm }: RegistrationFormProps) => {
         const { t } = useTranslation();
         const dispatch = useDispatch<any>();
         const { login, password, email, isLoading, currentStep, error } =
@@ -103,13 +104,29 @@ export const RegistrationForm = memo(
                         <div className={cls.btnWrapper}>
                             <Button
                                 disabled={!!isLoading}
+                                size={ButtonSize.ML}
                                 onClick={onRegistrationClick}
                             >
                                 {t('Регистрация')}
                             </Button>
-                            <Button onClick={onSend} className={cls.btnForgot}>
-                                {t('Выслать код повторно?')}
-                            </Button>
+                            <div className={cls.btnConfirmWrapper}>
+                                <Button
+                                    onClick={onConfirm}
+                                    size={ButtonSize.SM}
+                                    hover={Hover.UNDERLINE}
+                                >
+                                    {t('Введите код')}
+                                </Button>
+                                <Text size={TextSize.SM} text={t('или')} />
+                                <Button
+                                    onClick={onSend}
+                                    size={ButtonSize.SM}
+                                    hover={Hover.UNDERLINE}
+                                    className={cls.btnForgot}
+                                >
+                                    {t('отправить повторно')}
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 )}
