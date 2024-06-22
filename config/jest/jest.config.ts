@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-import * as path from 'path';
+import path from 'path';
 
 export default {
     globals: {
@@ -16,13 +16,14 @@ export default {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
         '^axios$': 'axios/dist/node/axios.cjs',
-        '^app/(.*)$': '<rootDir>/src/app/$1',
-        '^pages/(.*)$': '<rootDir>/src/pages/$1',
-        '^shared/(.*)$': '<rootDir>/src/shared/$1',
-        '^widgets/(.*)$': '<rootDir>/src/widgets/$1',
-        '^features/(.*)$': '<rootDir>/src/features/$1',
-        '^entities/(.*)$': '<rootDir>/src/entities/$1',
-        '^components/(.*)$': '<rootDir>/src/components/$1',
+        '^@/(.*)$': '<rootDir>/src/$1',
+        // '^app/(.*)$': '<rootDir>/src/app/$1',
+        // '^pages/(.*)$': '<rootDir>/src/pages/$1',
+        // '^shared/(.*)$': '<rootDir>/src/shared/$1',
+        // '^widgets/(.*)$': '<rootDir>/src/widgets/$1',
+        // '^features/(.*)$': '<rootDir>/src/features/$1',
+        // '^entities/(.*)$': '<rootDir>/src/entities/$1',
+        // '^components/(.*)$': '<rootDir>/src/components/$1',
     },
     modulePaths: ['<rootDir>src'],
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
