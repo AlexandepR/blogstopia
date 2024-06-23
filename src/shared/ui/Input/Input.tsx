@@ -49,7 +49,7 @@ export const Input = memo((props: InputProps) => {
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         if (context) {
-            context.font = getComputedStyle(ref.current!).font; // Получаем шрифт инпута
+            context.font = getComputedStyle(ref.current!).font; // Get font for input
             return context.measureText(text).width;
         }
         return 0;
@@ -57,7 +57,6 @@ export const Input = memo((props: InputProps) => {
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
-        // setCaretPosition(measureTextWidth(e.target.value));
     };
 
     const onFocus = () => {

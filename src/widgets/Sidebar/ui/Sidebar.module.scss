@@ -32,6 +32,17 @@
     flex-shrink: 0;
 }
 
+.collapsedBtn {
+    position: absolute;
+    right: -17px;
+    bottom: 30px;
+    width: 17px;
+}
+
+.collapsedSign {
+    font-size: 0.8em;
+}
+
 .switchers {
     position: absolute;
     bottom: 5px;
@@ -74,16 +85,7 @@
     }
 }
 
-.collapsedBtn {
-    position: absolute;
-    right: -17px;
-    bottom: 30px;
-    width: 17px;
-}
 
-.collapsedSign {
-    font-size: 0.8em;
-}
 
 
 

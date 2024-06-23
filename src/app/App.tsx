@@ -16,13 +16,11 @@ function App() {
             <Suspense fallback="">
                 <Header />
                 <Navbar />
-                {/* <Component /> */}
                 <div className="content-page">
                     <Sidebar />
                     <AppRouter />
                 </div>
             </Suspense>
-            {/* <Footer/> */}
         </div>
     );
 }
