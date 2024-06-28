@@ -58,7 +58,6 @@ export const Button = memo((props: ButtonProps) => {
         [cls[size]]: true,
         [cls.disabled]: disabled,
         [cls[hover]]: true,
-        [cls.hover_common]: true,
     };
 
     return (

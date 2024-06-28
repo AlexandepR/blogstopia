@@ -3,7 +3,7 @@
   color: var(--primary-color);
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.6;
     fill-opacity: 0.8;
     stroke-opacity: 0.8;
   }
@@ -45,11 +45,30 @@
   &:hover {
     opacity: 0.4;
   }
-
 }
 
+.hover_underline {
+  position: relative;
+  transition: background 0.3s ease;
 
-.hover_common {
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+    width: 0;
+    background: var(--secondary-color);
+    transition: width 0.3s ease, left 0.3s ease, right 0.3s ease;
+  }
+
+  &:hover::before {
+    height: 1px;
+    width: 86%;
+    left: 7%;
+  }
+}
+
+.hover_shadows {
   position: relative;
   transition: background 0.3s ease;
 
@@ -62,17 +81,7 @@
     background: var(--secondary-color);
     transition: width 0.3s ease, left 0.3s ease, right 0.3s ease;
   }
-}
 
-.hover_underline {
-  &:hover::before {
-    height: 1px;
-    width: 86%;
-    left: 7%;
-  }
-}
-
-.hover_shadows {
   &:hover::before {
     box-shadow: 2px -14px 9px 10px var(--bg-shadow-color);
     width: 86%;
