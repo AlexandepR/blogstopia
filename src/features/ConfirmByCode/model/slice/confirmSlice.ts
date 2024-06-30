@@ -1,7 +1,7 @@
-import type { ConfirmCodeSchema } from 'features/ConfirmByCode/model/types/confirmSchema';
+import type { ConfirmCodeSchema } from '../types/confirmSchema';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import { confirmByCode } from 'features/ConfirmByCode/model/services/confirmByCode';
+import { confirmByCode } from '../services/confirmByCode';
 
 const initialState: ConfirmCodeSchema = {
     code: '',
