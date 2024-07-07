@@ -29,10 +29,10 @@ export const registrationByUsername = createAsyncThunk<
                 email,
                 password,
             });
-            console.log(response, '----registrationByUsername----response');
+            console.log('[registrationByUsername] Response: ', response);
             return response.data;
-        } catch (err) {
-            console.log(err);
+        } catch (error) {
+            console.log('[registrationByUsername] Error: ', error);
             return thunkAPI.rejectWithValue(
                 i18n.t('Логин или Почта уже существует'),
             );

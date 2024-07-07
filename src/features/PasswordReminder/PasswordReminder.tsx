@@ -5,18 +5,17 @@ import { Button } from 'shared/ui/Button/Button';
 import cls from './PasswordReminder.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 
-interface PasswordReminderProps {
+interface PasswordByEmailReminderProps {
     className?: string;
     onBack: () => void;
     onSend: () => void;
-    // switchToLogin: () => void
 }
 
-export const PasswordReminder = ({
+export const PasswordByEmailReminder = ({
     className,
     onBack,
     onSend,
-}: PasswordReminderProps) => {
+}: PasswordByEmailReminderProps) => {
     const { t } = useTranslation();
     return (
         <div className={classNames(cls.PasswordReminder, {}, [className])}>
