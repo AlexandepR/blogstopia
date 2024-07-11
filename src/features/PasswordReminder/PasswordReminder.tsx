@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Input } from 'shared/ui/Input/Input';
+import { Input, InputType } from 'shared/ui/Input/Input';
 import React from 'react';
 import { Button } from 'shared/ui/Button/Button';
 import cls from './PasswordReminder.module.scss';
@@ -22,7 +22,7 @@ export const PasswordByEmailReminder = ({
             <h1 className={cls.header}>{t('Восстановление пароля')}</h1>
             <div className={cls.content}>
                 <label>{t('Почта')}</label>
-                <Input autofocus type="text" className={cls.input} />
+                <Input autofocus type={InputType.TEXT} className={cls.input} />
                 <div className={cls.btnWrapper}>
                     <Button onClick={onSend}>{t('Отправить')}</Button>
                     <Button className={cls.btnCancel} onClick={onBack}>

@@ -1,5 +1,5 @@
 import cls from './RegistrationForm.module.scss';
-import { Input } from 'shared/ui/Input/Input';
+import { Input, InputType } from 'shared/ui/Input/Input';
 import { Button, ButtonSize, Hover } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -68,7 +68,7 @@ export const RegistrationForm = memo(
                                 <label>{t('Логин')}</label>
                                 <Input
                                     autofocus
-                                    type="text"
+                                    type={InputType.TEXT}
                                     className={cls.input}
                                     value={login}
                                     onChange={onChangeLogin}
@@ -77,7 +77,7 @@ export const RegistrationForm = memo(
                             <div className={cls.item}>
                                 <label>{t('Почта')}</label>
                                 <Input
-                                    type="text"
+                                    type={InputType.TEXT}
                                     className={cls.input}
                                     value={email}
                                     onChange={onChangeEmail}
@@ -86,7 +86,7 @@ export const RegistrationForm = memo(
                             <div className={cls.item}>
                                 <label>{t('Пароль')}</label>
                                 <Input
-                                    type="password"
+                                    type={InputType.PASSWORD}
                                     className={cls.inputPass}
                                     value={password}
                                     onChange={onChangePassword}

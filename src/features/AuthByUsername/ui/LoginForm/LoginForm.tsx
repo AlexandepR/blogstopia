@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonSize, Hover } from 'shared/ui/Button/Button';
 import cls from './LoginForm.module.scss';
-import { Input } from 'shared/ui/Input/Input';
+import { Input, InputType } from 'shared/ui/Input/Input';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -47,14 +47,14 @@ export const LoginForm = ({
                     <label>{t('Логин или почта')}</label>
                     <Input
                         autofocus
-                        type="text"
+                        type={InputType.TEXT}
                         className={cls.input}
                         value={loginOrEmail}
                         onChange={onChangeLogin}
                     />
                     <label>{t('Пароль')}</label>
                     <Input
-                        type="password"
+                        type={InputType.PASSWORD}
                         className={cls.inputPass}
                         value={password}
                         onChange={onChangePassword}

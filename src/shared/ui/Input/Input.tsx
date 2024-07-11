@@ -1,25 +1,24 @@
 import type { InputHTMLAttributes } from 'react';
-import React, {
-    useLayoutEffect,
-    useRef,
-    useEffect,
-    useState,
-    memo,
-} from 'react';
+import React, { useRef, useEffect, useState, memo } from 'react';
 import cls from './Input.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, type ModsType } from 'shared/lib/classNames/classNames';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
     'value' | 'onChange'
 >;
 
+export enum InputType {
+    TEXT = 'text',
+    PASSWORD = 'password',
+}
+
 export interface InputProps extends HTMLInputProps {
     className?: string;
     autofocus?: boolean;
     placeholder?: string;
     value?: string;
-    type?: string;
+    type?: InputType;
     onChange?: (value: string) => void;
 }
 
@@ -29,7 +28,7 @@ export const Input = memo((props: InputProps) => {
         autofocus,
         placeholder,
         value,
-        type = 'text',
+        type = InputType.TEXT,
         onChange,
         ...otherProps
     } = props;
@@ -49,7 +48,7 @@ export const Input = memo((props: InputProps) => {
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         if (context) {
-            context.font = getComputedStyle(ref.current!).font; // Get font for input
+            context.font = getComputedStyle(ref.current!).font;
             return context.measureText(text).width;
         }
         return 0;
@@ -76,6 +75,10 @@ export const Input = memo((props: InputProps) => {
         });
     };
 
+    const mods: ModsType = {
+        [cls[type]]: true,
+    };
+
     return (
         <div className={classNames(cls.InputWrapper, {}, [className])}>
             <div className={cls.caretWrapper}>
@@ -86,7 +89,7 @@ export const Input = memo((props: InputProps) => {
                     onBlur={onBlur}
                     onFocus={onFocus}
                     onSelect={onSelect}
-                    className={classNames(cls.input)}
+                    className={classNames(cls.input, mods)}
                     placeholder={placeholder}
                     onChange={onChangeHandler}
                     {...otherProps}

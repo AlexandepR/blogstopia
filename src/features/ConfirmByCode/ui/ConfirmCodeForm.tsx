@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ConfirmCodeForm.module.scss';
-import { Input } from 'shared/ui/Input/Input';
+import { Input, InputType } from 'shared/ui/Input/Input';
 import { Button } from 'shared/ui/Button/Button';
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -53,7 +53,7 @@ export const ConfirmCodeForm = ({
                 <label>{t('Код подтверждения')}</label>
                 <Input
                     autofocus
-                    type="text"
+                    type={InputType.TEXT}
                     className={cls.input}
                     onChange={onChangeConfirmCode}
                 />
