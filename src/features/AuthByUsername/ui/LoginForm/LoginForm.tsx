@@ -7,7 +7,7 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from '../../model/slice/loginSlice';
 import { getLoginState } from '../../model/selectors/getLoginState';
-import { loginByUserName } from 'features/AuthByUsername/model/services/loginByUserName';
+import { loginByUserName } from '../../model/services/loginByUserName';
 
 interface LoginFormProps {
     className?: string;

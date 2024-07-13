@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
+import { COOKIE } from 'shared/const/cookies';
+import api from 'shared/api/api';
 
 interface LoginResponse {
     accessToken: string;
@@ -19,11 +19,11 @@ export const loginByUserName = createAsyncThunk<
     }
 >('loginByUserName', async (authData, thunkApi) => {
     const { extra, dispatch, rejectWithValue } = thunkApi;
+
     try {
-        const response = await axios.post(`${__API__}/auth/login`, authData);
-        if (!response.data) {
-            throw new Error();
-        }
+        const response = await api.post(`${__API__}/auth/login`, authData);
+        document.cookie = `${COOKIE.ACCESS_TOKEN}=${response.data.accessToken}`;
+
         console.log('[loginByUserName] Response: ', response);
         return response.data;
     } catch (error) {

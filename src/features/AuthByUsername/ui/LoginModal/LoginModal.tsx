@@ -5,8 +5,8 @@ import cls from './LoginModal.module.scss';
 import { useState } from 'react';
 import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { PasswordReminder } from '../PasswordReminder/PasswordReminder';
-import { RegistrationConfirmForm } from '../RegistrationConfirmForm/RegistrationConfirmForm';
+import { PasswordByEmailReminder } from 'features/PasswordReminder/PasswordReminder';
+import { ConfirmCodeForm } from 'features/ConfirmByCode/ui/ConfirmCodeForm';
 import { RegistrationForm } from 'features/RegistrationByUserName';
 
 export interface LoginModalProps {
@@ -72,16 +72,20 @@ export const LoginModal = (props: LoginModalProps) => {
                     />
                 )}
                 {view === 'register' && (
-                    <RegistrationForm onSend={switchToForgotPassword} />
+                    <RegistrationForm
+                        onSend={switchToForgotPassword}
+                        onConfirm={RegistrationConfirm}
+                        onClose={onClose}
+                    />
                 )}
                 {view === 'forgotPassword' && (
-                    <PasswordReminder
+                    <PasswordByEmailReminder
                         onBack={switchToLogin}
                         onSend={RegistrationConfirm}
                     />
                 )}
                 {view === 'registerConfirm' && (
-                    <RegistrationConfirmForm onBack={switchToForgotPassword} />
+                    <ConfirmCodeForm onBack={switchToLogin} onClose={onClose} />
                 )}
             </div>
         </Modal>

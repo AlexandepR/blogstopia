@@ -35,7 +35,7 @@ export function buildPlugins (options: BuildOptions): webpack.WebpackPluginInsta
 
     if (isDev) {
         plugins.push(new webpack.HotModuleReplacementPlugin());
-        plugins.push(new ForkTsCheckerWebpackPlugin()); // Makes type checking a separate process
+        plugins.push(new ForkTsCheckerWebpackPlugin()); // Makes type checking a separate process and speed up TS
         plugins.push(new ReactRefreshWebpackPlugin()); // Hot start
     }
 

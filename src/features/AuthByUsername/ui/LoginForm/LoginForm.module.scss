@@ -5,10 +5,8 @@
   letter-spacing: 1.5em;
 }
 
-.inputPass input {
+.inputPass {
   width: 240px;
-  border-bottom:  1px solid #1a1a1a;
-  letter-spacing: 0.19em;
 }
 
 .content {
@@ -18,7 +16,7 @@
   margin: 80px 100px 70px;
 }
 
-@media ( width <= 380px ) {
+@media (width <= 380px) {
   .LoginForm input {
     width: 100px;
   }
@@ -36,13 +34,13 @@
 .btnWrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  font-weight: 900;
-  border: none
 }
 
 .btnWrapper button {
   border: none;
+  display: inline-block;
 }
 
 .btnForgot,
