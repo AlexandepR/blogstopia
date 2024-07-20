@@ -55,7 +55,7 @@ export const LoginForm = ({
                     <label>{t('Пароль')}</label>
                     <Input
                         type={InputType.PASSWORD}
-                        className={cls.inputPass}
+                        className={cls.input}
                         value={password}
                         onChange={onChangePassword}
                     />

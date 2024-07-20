@@ -1,8 +1,6 @@
 .input {
   width: 240px;
-  border-bottom: 1px solid #1a1a1a;
   margin-bottom: 20px;
-  letter-spacing: 1.5em;
 }
 
 .error {
@@ -19,21 +17,15 @@
     }
 }
 
-.inputPass input {
-  width: 240px;
-  border-bottom:  1px solid #1a1a1a;
-  letter-spacing: 0.19em;
-}
-
 .content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin: 80px 100px 70px;
 }
 
 .item {
-  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

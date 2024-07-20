@@ -73,8 +73,6 @@ export const RegistrationForm = memo(
                                     value={login}
                                     onChange={onChangeLogin}
                                 />
-                            </div>
-                            <div className={cls.item}>
                                 <label>{t('Почта')}</label>
                                 <Input
                                     type={InputType.TEXT}
@@ -82,12 +80,10 @@ export const RegistrationForm = memo(
                                     value={email}
                                     onChange={onChangeEmail}
                                 />
-                            </div>
-                            <div className={cls.item}>
                                 <label>{t('Пароль')}</label>
                                 <Input
                                     type={InputType.PASSWORD}
-                                    className={cls.inputPass}
+                                    className={cls.input}
                                     value={password}
                                     onChange={onChangePassword}
                                 />
