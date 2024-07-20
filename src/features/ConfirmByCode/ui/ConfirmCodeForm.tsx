@@ -12,15 +12,12 @@ import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { registrationActions } from 'features/RegistrationByUserName/model/slice/registrationSlice';
 import { RegistrationStep } from 'features/RegistrationByUserName/model/types/registrationSchema';
 
-interface RegistrationConfirmFormProps {
+export interface RegistrationConfirmFormProps {
     onBack: () => void;
     onClose: () => void;
 }
 
-export const ConfirmCodeForm = ({
-    onBack,
-    onClose,
-}: RegistrationConfirmFormProps) => {
+const ConfirmCodeForm = ({ onBack, onClose }: RegistrationConfirmFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch<any>();
     const { code, error, isConfirm } = useSelector(getConfirmCode);
@@ -86,3 +83,4 @@ export const ConfirmCodeForm = ({
         </div>
     );
 };
+export default ConfirmCodeForm;

@@ -5,13 +5,13 @@ import { Button } from 'shared/ui/Button/Button';
 import cls from './PasswordReminder.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 
-interface PasswordByEmailReminderProps {
+export interface PasswordByEmailReminderProps {
     className?: string;
     onBack: () => void;
     onSend: () => void;
 }
 
-export const PasswordByEmailReminder = ({
+const PasswordByEmailReminder = ({
     className,
     onBack,
     onSend,
@@ -33,3 +33,4 @@ export const PasswordByEmailReminder = ({
         </div>
     );
 };
+export default PasswordByEmailReminder;

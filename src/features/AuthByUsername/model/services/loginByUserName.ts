@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { COOKIE } from 'shared/const/cookies';
-import api from 'shared/api/api';
+import type { ThunkConfig } from 'app/providers/StoreProvider';
 
 interface LoginResponse {
     accessToken: string;
@@ -14,14 +14,19 @@ interface LoginByUserNameProps {
 export const loginByUserName = createAsyncThunk<
     LoginResponse,
     LoginByUserNameProps,
-    {
-        rejectValue: string;
-    }
+    ThunkConfig<string>
 >('loginByUserName', async (authData, thunkApi) => {
     const { extra, dispatch, rejectWithValue } = thunkApi;
 
     try {
-        const response = await api.post(`${__API__}/auth/login`, authData);
+        console.log(authData, '---------------------authData------------');
+        const response = await extra.api.post(`/auth/login`, authData);
+        console.log(response, '---------------------RESPONSE-------------');
+
+        if (!response.data?.accessToken) {
+            throw new Error('Invalid response format');
+        }
+
         document.cookie = `${COOKIE.ACCESS_TOKEN}=${response.data.accessToken}`;
 
         console.log('[loginByUserName] Response: ', response);

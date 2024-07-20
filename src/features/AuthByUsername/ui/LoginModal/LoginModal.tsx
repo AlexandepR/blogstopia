@@ -1,13 +1,13 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Modal } from 'shared/ui/Modal/Modal';
-import { LoginForm } from '../LoginForm/LoginForm';
 import cls from './LoginModal.module.scss';
 import { useState } from 'react';
 import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { PasswordByEmailReminder } from 'features/PasswordReminder/PasswordReminder';
-import { ConfirmCodeForm } from 'features/ConfirmByCode/ui/ConfirmCodeForm';
-import { RegistrationForm } from 'features/RegistrationByUserName';
+import { LoginFormAsync } from 'features/AuthByUsername/ui/LoginForm/LoginFormAsync';
+import { ConfirmCodeFormAsync } from 'features/ConfirmByCode/ui/ConfirmCodeFormAsync';
+import { PasswordByEmailReminderAsync } from 'features/PasswordReminder/PasswordReminderAsync';
+import { RegistrationFormAsync } from 'features/RegistrationByUserName/ui/RegistrationForm/RegistrationFormAsync';
 
 export interface LoginModalProps {
     className?: string;
@@ -67,25 +67,28 @@ export const LoginModal = (props: LoginModalProps) => {
                     </Button>
                 </div>
                 {view === 'login' && (
-                    <LoginForm
+                    <LoginFormAsync
                         switchToForgotPassword={switchToForgotPassword}
                     />
                 )}
                 {view === 'register' && (
-                    <RegistrationForm
+                    <RegistrationFormAsync
                         onSend={switchToForgotPassword}
                         onConfirm={RegistrationConfirm}
                         onClose={onClose}
                     />
                 )}
                 {view === 'forgotPassword' && (
-                    <PasswordByEmailReminder
+                    <PasswordByEmailReminderAsync
                         onBack={switchToLogin}
                         onSend={RegistrationConfirm}
                     />
                 )}
                 {view === 'registerConfirm' && (
-                    <ConfirmCodeForm onBack={switchToLogin} onClose={onClose} />
+                    <ConfirmCodeFormAsync
+                        onBack={switchToLogin}
+                        onClose={onClose}
+                    />
                 )}
             </div>
         </Modal>

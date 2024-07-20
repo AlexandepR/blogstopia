@@ -9,15 +9,12 @@ import { loginActions } from '../../model/slice/loginSlice';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginByUserName } from '../../model/services/loginByUserName';
 
-interface LoginFormProps {
+export interface LoginFormProps {
     className?: string;
     switchToForgotPassword: () => void;
 }
 
-export const LoginForm = ({
-    className,
-    switchToForgotPassword,
-}: LoginFormProps) => {
+const LoginForm = ({ className, switchToForgotPassword }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch<any>();
     const { loginOrEmail, password, error } = useSelector(getLoginState);
@@ -74,3 +71,4 @@ export const LoginForm = ({
         </div>
     );
 };
+export default LoginForm;

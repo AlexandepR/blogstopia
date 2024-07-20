@@ -9,17 +9,17 @@ import { memo, useCallback } from 'react';
 import { registrationActions } from '../../model/slice/registrationSlice';
 import { getRegistrationState } from '../../model/selectors/getRegistrationState/getRegistrationState';
 import { registrationByUsername } from '../../model/services/registrationByUsername/registrationByUsername';
-import { ConfirmCodeForm } from 'features/ConfirmByCode/ui/ConfirmCodeForm';
 import { RegistrationStep } from 'features/RegistrationByUserName/model/types/registrationSchema';
+import { ConfirmCodeFormAsync } from 'features/ConfirmByCode/ui/ConfirmCodeFormAsync';
 
-interface RegistrationFormProps {
+export interface RegistrationFormProps {
     onSend: () => void;
     onConfirm: () => void;
     onClose: () => void;
     className?: string;
 }
 
-export const RegistrationForm = memo(
+const RegistrationForm = memo(
     ({ className, onSend, onClose, onConfirm }: RegistrationFormProps) => {
         const { t } = useTranslation();
         const dispatch = useDispatch<any>();
@@ -127,7 +127,7 @@ export const RegistrationForm = memo(
                     </div>
                 )}
                 {currentStep === RegistrationStep.Confirm && (
-                    <ConfirmCodeForm
+                    <ConfirmCodeFormAsync
                         onBack={switchToRegistration}
                         onClose={onClose}
                     />
@@ -136,3 +136,4 @@ export const RegistrationForm = memo(
         );
     },
 );
+export default RegistrationForm;
