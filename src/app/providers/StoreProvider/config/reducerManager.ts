@@ -21,10 +21,9 @@ export function createReducerManager(
     initialReducers: ReducersMapObject<StateSchema>,
 ): ReducerManager {
     const reducers = { ...initialReducers };
-    const copyReducers: any = {};
-    let combinedReducer = createCombinedReducer(reducers);
-
     let keysToRemove: StateSchemaKey[] = [];
+
+    let combinedReducer = createCombinedReducer(reducers);
 
     return {
         getReducerMap: () => reducers,
