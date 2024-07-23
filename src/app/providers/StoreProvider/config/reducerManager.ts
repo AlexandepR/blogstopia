@@ -9,6 +9,7 @@ import type {
     StateSchema,
     StateSchemaKey,
 } from './StateSchema';
+import _ from 'lodash';
 
 export type RootState = ReturnType<ReturnType<typeof createCombinedReducer>>;
 
@@ -20,7 +21,7 @@ export function createReducerManager(
     initialReducers: ReducersMapObject<StateSchema>,
 ): ReducerManager {
     const reducers = { ...initialReducers };
-
+    const copyReducers: any = {};
     let combinedReducer = createCombinedReducer(reducers);
 
     let keysToRemove: StateSchemaKey[] = [];
@@ -29,13 +30,14 @@ export function createReducerManager(
         getReducerMap: () => reducers,
         reduce: (state: RootState, action: UnknownAction): RootState => {
             if (keysToRemove.length > 0) {
-                const newState = { ...state } as Partial<StateSchema>;
-                keysToRemove.forEach((key) => {
-                    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-                    delete newState[key];
-                });
+                const newState = Object.fromEntries(
+                    Object.entries(state).filter(
+                        ([key]) =>
+                            !keysToRemove.includes(key as StateSchemaKey),
+                    ),
+                ) as RootState;
                 keysToRemove = [];
-                return combinedReducer(newState as RootState, action);
+                return combinedReducer(newState, action);
             }
             return combinedReducer(state, action);
         },
@@ -51,10 +53,12 @@ export function createReducerManager(
             if (!key || !reducers[key]) {
                 return;
             }
-            // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-            delete reducers[key];
+            const newReducers = _.omit(
+                reducers,
+                key,
+            ) as ReducersMapObject<StateSchema>;
             keysToRemove.push(key);
-            combinedReducer = createCombinedReducer(reducers);
+            combinedReducer = createCombinedReducer(newReducers);
         },
     };
 }
