@@ -1,22 +1,40 @@
-import type { ReducersMapObject } from '@reduxjs/toolkit';
+import type { Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit';
 import type { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
 import { userReducer } from 'entities/User';
-import { registrationReducer } from 'features/RegistrationByUserName';
-import { confirmCodeReducer } from 'features/ConfirmByCode/model/slice/confirmSlice';
-import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
+import api from 'shared/api/api';
+import type { NavigateOptions } from 'react-router';
+import type { To } from 'history';
+import { createReducerManager } from './reducerManager';
 
-export function createReduxStore(initialState?: StateSchema) {
+export function createReduxStore(
+    initialState?: StateSchema,
+    asyncReducers?: ReducersMapObject<StateSchema>,
+    navigate?: (to: To, options?: NavigateOptions) => void,
+) {
     const rootReducers: ReducersMapObject<StateSchema> = {
+        ...asyncReducers,
         user: userReducer,
-        registrationForm: registrationReducer,
-        confirmCode: confirmCodeReducer,
-        login: loginReducer,
     };
 
-    return configureStore({
-        reducer: rootReducers,
+    const reducerManager = createReducerManager(rootReducers);
+
+    const store = configureStore({
+        reducer: reducerManager.reduce as Reducer<StateSchema>,
         devTools: __IS_DEV__,
-        preloadedState: initialState,
+        preloadedState: initialState!,
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+                thunk: {
+                    extraArgument: {
+                        api,
+                        navigate,
+                    },
+                },
+            }),
     });
+
+    // @ts-expect-error its ok)
+    store.reducerManager = reducerManager;
+    return store;
 }
