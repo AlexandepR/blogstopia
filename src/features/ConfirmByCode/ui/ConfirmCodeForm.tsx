@@ -7,10 +7,12 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { confirmActions } from '../model/slice/confirmSlice';
 import { confirmByCode } from '../model/services/confirmByCode';
-import { getConfirmCode } from '../model/selectors/getConfirmCode';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { registrationActions } from 'features/RegistrationByUserName/model/slice/registrationSlice';
 import { RegistrationStep } from 'features/RegistrationByUserName/model/types/registrationSchema';
+import { getConfirmCodeIsConfirm } from '../model/selectors/getConfirmCodeIsConfirm/getConfirmCodeIsConfirm';
+import { getConfirmCodeError } from '../model/selectors/getConfirmCodeError/getConfirmCodeError';
+import { getConfirmCode } from '../model/selectors/getConfirmCode/getConfirmCode';
 
 export interface RegistrationConfirmFormProps {
     onBack: () => void;
@@ -20,8 +22,10 @@ export interface RegistrationConfirmFormProps {
 const ConfirmCodeForm = ({ onBack, onClose }: RegistrationConfirmFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch<any>();
-    const { code, error, isConfirm } = useSelector(getConfirmCode);
-
+    const code = useSelector(getConfirmCode);
+    const isConfirm = useSelector(getConfirmCodeIsConfirm);
+    const error = useSelector(getConfirmCodeError);
+    console.log('------CONFIRM------');
     const onChangeConfirmCode = useCallback(
         (value: string) => {
             dispatch(confirmActions.setConfirmCode(value));
@@ -36,7 +40,7 @@ const ConfirmCodeForm = ({ onBack, onClose }: RegistrationConfirmFormProps) => {
     const onCloseConfirmForm = useCallback(() => {
         dispatch(confirmActions.setIsConfirm(false));
         dispatch(
-            registrationActions.setIsSendConfirmCode(
+            registrationActions.setRegistrationStep(
                 RegistrationStep.Registration,
             ),
         );
