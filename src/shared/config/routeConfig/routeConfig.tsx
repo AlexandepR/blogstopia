@@ -2,7 +2,6 @@ import type { RouteProps } from 'react-router';
 import { HomePage } from 'pages/MainPage';
 import { BlogsPage } from 'pages/Blogs';
 import { PostsPage } from 'pages/Posts';
-import React from 'react';
 import { NotFoundPage } from 'pages/NotFound';
 import TestPage from 'pages/Test/components/form';
 

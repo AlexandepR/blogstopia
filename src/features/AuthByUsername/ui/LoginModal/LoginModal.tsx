@@ -1,19 +1,21 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Modal } from 'shared/ui/Modal/Modal';
 import cls from './LoginModal.module.scss';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { LoginFormAsync } from 'features/AuthByUsername/ui/LoginForm/LoginFormAsync';
 import { ConfirmCodeFormAsync } from 'features/ConfirmByCode/ui/ConfirmCodeFormAsync';
-import { PasswordByEmailReminderAsync } from 'features/PasswordReminder/PasswordReminderAsync';
+import { PasswordByEmailReminderFormAsync } from 'features/PasswordReminder/PasswordReminderAsync';
 import { RegistrationFormAsync } from 'features/RegistrationByUserName/ui/RegistrationForm/RegistrationFormAsync';
+import { Loader } from 'shared/ui/Loader/Loader';
 
 export interface LoginModalProps {
     className?: string;
     isOpen: boolean;
     onClose: () => void;
 }
+
 type ViewType = 'login' | 'register' | 'registerConfirm' | 'forgotPassword';
 
 export const LoginModal = (props: LoginModalProps) => {
@@ -67,28 +69,36 @@ export const LoginModal = (props: LoginModalProps) => {
                     </Button>
                 </div>
                 {view === 'login' && (
-                    <LoginFormAsync
-                        switchToForgotPassword={switchToForgotPassword}
-                    />
+                    <Suspense fallback={<Loader />}>
+                        <LoginFormAsync
+                            switchToForgotPassword={switchToForgotPassword}
+                        />
+                    </Suspense>
                 )}
                 {view === 'register' && (
-                    <RegistrationFormAsync
-                        onSend={switchToForgotPassword}
-                        onConfirm={RegistrationConfirm}
-                        onClose={onClose}
-                    />
+                    <Suspense fallback={<Loader />}>
+                        <RegistrationFormAsync
+                            onSend={switchToForgotPassword}
+                            onConfirm={RegistrationConfirm}
+                            onClose={onClose}
+                        />
+                    </Suspense>
                 )}
                 {view === 'forgotPassword' && (
-                    <PasswordByEmailReminderAsync
-                        onBack={switchToLogin}
-                        onSend={RegistrationConfirm}
-                    />
+                    <Suspense fallback={<Loader />}>
+                        <PasswordByEmailReminderFormAsync
+                            onBack={switchToLogin}
+                            onSend={RegistrationConfirm}
+                        />
+                    </Suspense>
                 )}
                 {view === 'registerConfirm' && (
-                    <ConfirmCodeFormAsync
-                        onBack={switchToLogin}
-                        onClose={onClose}
-                    />
+                    <Suspense fallback={<Loader />}>
+                        <ConfirmCodeFormAsync
+                            onBack={switchToLogin}
+                            onClose={onClose}
+                        />
+                    </Suspense>
                 )}
             </div>
         </Modal>

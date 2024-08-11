@@ -9,7 +9,6 @@ import type {
     StateSchema,
     StateSchemaKey,
 } from './StateSchema';
-import _ from 'lodash';
 
 export type RootState = ReturnType<ReturnType<typeof createCombinedReducer>>;
 
@@ -21,9 +20,10 @@ export function createReducerManager(
     initialReducers: ReducersMapObject<StateSchema>,
 ): ReducerManager {
     const reducers = { ...initialReducers };
-    let keysToRemove: StateSchemaKey[] = [];
 
-    let combinedReducer = createCombinedReducer(reducers);
+    let combinedReducer = combineReducers(reducers);
+
+    let keysToRemove: StateSchemaKey[] = [];
 
     return {
         getReducerMap: () => reducers,
@@ -46,18 +46,16 @@ export function createReducerManager(
             }
             reducers[key] = reducer;
 
-            combinedReducer = createCombinedReducer(reducers);
+            combinedReducer = combineReducers(reducers);
         },
         remove: (key: StateSchemaKey) => {
             if (!key || !reducers[key]) {
                 return;
             }
-            const newReducers = _.omit(
-                reducers,
-                key,
-            ) as ReducersMapObject<StateSchema>;
+            delete reducers[key];
             keysToRemove.push(key);
-            combinedReducer = createCombinedReducer(newReducers);
+
+            combinedReducer = combineReducers(reducers);
         },
     };
 }

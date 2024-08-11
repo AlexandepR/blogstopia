@@ -25,7 +25,7 @@ export const registrationSlice = createSlice({
         setPassword: (state, action: PayloadAction<string>) => {
             state.password = action.payload;
         },
-        setIsSendConfirmCode: (
+        setRegistrationStep: (
             state,
             action: PayloadAction<RegistrationStep>,
         ) => {

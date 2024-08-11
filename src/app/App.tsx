@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import '../App.scss';
 import './styles/index.scss';
 import Header from '../components/Header';
