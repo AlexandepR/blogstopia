@@ -1,5 +1,4 @@
 import type webpack from 'webpack';
-import path from 'path';
 import type { BuildOptions } from './types/config';
 import { buildPlugins } from './buildPlugins';
 import { buildLoaders } from './buildLoaders';
@@ -23,6 +22,12 @@ export function buildWebpackConfig (options: BuildOptions): webpack.Configuratio
         },
         resolve: buildResolvers(options),
         devtool: isDev ? 'eval-cheap-module-source-map' : 'source-map',
-        devServer: isDev ? buildDevServer(options) : undefined
+        devServer: isDev ? buildDevServer(options) : undefined,
+        optimization: {
+            minimize: true,
+            splitChunks: {
+                chunks: 'all',
+            },
+        },
     };
 }
