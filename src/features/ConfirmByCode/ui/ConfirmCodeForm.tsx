@@ -23,6 +23,10 @@ export interface RegistrationConfirmFormProps {
     onClose: () => void;
 }
 
+const initialReducers = {
+    confirmCode: confirmCodeReducer,
+};
+
 const ConfirmCodeForm = ({ onBack, onClose }: RegistrationConfirmFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch<any>();
@@ -52,7 +56,7 @@ const ConfirmCodeForm = ({ onBack, onClose }: RegistrationConfirmFormProps) => {
     }, [dispatch, onClose]);
 
     return !isConfirm ? (
-        <DynamicModuleLoader name={'confirmCode'} reducer={confirmCodeReducer}>
+        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <div className={classNames(cls.RegistrationConfirm, {}, [])}>
                 <h1 className={cls.header}>{t('Введите код')}</h1>
                 <div className={cls.content}>

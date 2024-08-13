@@ -29,6 +29,10 @@ export interface RegistrationFormProps {
     className?: string;
 }
 
+const initialReducers = {
+    registrationForm: registrationReducer,
+};
+
 const RegistrationForm = memo(
     ({ className, onSend, onClose, onConfirm }: RegistrationFormProps) => {
         const { t } = useTranslation();
@@ -86,10 +90,7 @@ const RegistrationForm = memo(
         };
 
         return (
-            <DynamicModuleLoader
-                name={'registrationForm'}
-                reducer={registrationReducer}
-            >
+            <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
                 <div
                     className={classNames(cls.RegistrationForm, {}, [
                         className,

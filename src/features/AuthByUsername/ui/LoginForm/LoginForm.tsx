@@ -18,6 +18,10 @@ export interface LoginFormProps {
     switchToForgotPassword: () => void;
 }
 
+const initialReducers = {
+    login: loginReducer,
+};
+
 const LoginForm = ({ className, switchToForgotPassword }: LoginFormProps) => {
     const { t } = useTranslation();
     const store = useStore() as ReduxStoreWithManager;
@@ -45,7 +49,7 @@ const LoginForm = ({ className, switchToForgotPassword }: LoginFormProps) => {
     }, [dispatch, loginOrEmail, password]);
 
     return (
-        <DynamicModuleLoader name={'login'} reducer={loginReducer}>
+        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <div className={classNames(cls.LoginForm, {}, [className])}>
                 <div>
                     <div className={cls.content}>

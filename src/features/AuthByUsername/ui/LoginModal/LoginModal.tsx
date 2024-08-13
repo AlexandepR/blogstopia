@@ -6,7 +6,7 @@ import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { LoginFormAsync } from 'features/AuthByUsername/ui/LoginForm/LoginFormAsync';
 import { ConfirmCodeFormAsync } from 'features/ConfirmByCode/ui/ConfirmCodeFormAsync';
-import { PasswordByEmailReminderFormAsync } from 'features/PasswordReminder/PasswordReminderAsync';
+import { PasswordByEmailReminderFormAsync } from 'features/PasswordReminder/ui/PasswordReminderAsync';
 import { RegistrationFormAsync } from 'features/RegistrationByUserName/ui/RegistrationForm/RegistrationFormAsync';
 import { Loader } from 'shared/ui/Loader/Loader';
 
