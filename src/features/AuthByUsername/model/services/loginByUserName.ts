@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { COOKIE } from 'shared/const/cookies';
 import type { ThunkConfig } from 'app/providers/StoreProvider';
+import i18n from 'shared/config/i18n/i18n';
 
 interface LoginResponse {
     accessToken: string;
@@ -16,23 +17,20 @@ export const loginByUserName = createAsyncThunk<
     LoginByUserNameProps,
     ThunkConfig<string>
 >('loginByUserName', async (authData, thunkApi) => {
-    const { extra, dispatch, rejectWithValue } = thunkApi;
+    const { extra, rejectWithValue } = thunkApi;
 
     try {
-        console.log(authData, '---------------------authData------------');
         const response = await extra.api.post(`/auth/login`, authData);
-        console.log(response, '---------------------RESPONSE-------------');
 
         if (!response.data?.accessToken) {
-            throw new Error('Invalid response format');
+            return rejectWithValue('Invalid response format');
         }
 
         document.cookie = `${COOKIE.ACCESS_TOKEN}=${response.data.accessToken}`;
-
         console.log('[loginByUserName] Response: ', response);
         return response.data;
     } catch (error) {
         console.log('[loginByUserName] Error: ', error);
-        return rejectWithValue('error');
+        return rejectWithValue(i18n.t('Неверный логин или пароль'));
     }
 });

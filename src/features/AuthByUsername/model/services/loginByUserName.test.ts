@@ -36,6 +36,6 @@ describe('LoginByUserName', () => {
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
         expect(result.meta.requestStatus).toBe('rejected');
-        expect(result.payload).toBe('error');
+        expect(result.payload).toBe('Неверный логин или пароль');
     });
 });
