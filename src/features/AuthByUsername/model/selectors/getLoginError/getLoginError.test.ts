@@ -1,4 +1,4 @@
-import { getLoginError } from 'features/AuthByUsername/model/selectors/getLoginError/getLoginError';
+import { getLoginError } from './getLoginError';
 import type { StateSchema } from 'app/providers/StoreProvider';
 import type { DeepPartial } from 'app/providers/StoreProvider/config/StateSchema';
 
