@@ -2,7 +2,7 @@ import { getLoginError } from './getLoginError';
 import type { StateSchema } from 'app/providers/StoreProvider';
 import type { DeepPartial } from 'app/providers/StoreProvider/config/StateSchema';
 
-describe('getLoginError', () => {
+describe('getLoginError.test', () => {
     test('should return error', () => {
         const state: DeepPartial<StateSchema> = {
             login: {

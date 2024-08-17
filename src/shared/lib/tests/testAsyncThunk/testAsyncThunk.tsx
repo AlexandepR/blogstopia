@@ -23,9 +23,9 @@ jest.mock('axios', () => {
 const mockedAxios = axios.create() as jest.Mocked<AxiosInstance>;
 
 export class TestAsyncThunk<Return, Arg, RejectedValue> {
+    actionCreator: ActionCreatorType<Return, Arg, RejectedValue>;
     dispatch: jest.MockedFn<any>;
     getState: () => StateSchema;
-    actionCreator: ActionCreatorType<Return, Arg, RejectedValue>;
     api: jest.Mocked<AxiosInstance>;
     navigate: jest.MockedFn<any>;
 

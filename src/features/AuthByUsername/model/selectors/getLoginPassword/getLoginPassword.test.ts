@@ -4,7 +4,7 @@ import type {
 } from 'app/providers/StoreProvider/config/StateSchema';
 import { getLoginPassword } from './getLoginPassword';
 
-describe('getLoginPassword', () => {
+describe('getLoginPassword.test', () => {
     test('should get password', () => {
         const state: DeepPartial<StateSchema> = {
             login: {
