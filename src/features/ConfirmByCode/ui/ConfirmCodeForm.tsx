@@ -4,7 +4,7 @@ import cls from './ConfirmCodeForm.module.scss';
 import { Input, InputType } from 'shared/ui/Input/Input';
 import { Button } from 'shared/ui/Button/Button';
 import React, { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
     confirmActions,
     confirmCodeReducer,
@@ -17,6 +17,7 @@ import { getConfirmCodeIsConfirm } from '../model/selectors/getConfirmCodeIsConf
 import { getConfirmCodeError } from '../model/selectors/getConfirmCodeError/getConfirmCodeError';
 import { getConfirmCode } from '../model/selectors/getConfirmCode/getConfirmCode';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface RegistrationConfirmFormProps {
     onBack: () => void;
@@ -29,7 +30,7 @@ const initialReducers = {
 
 const ConfirmCodeForm = ({ onBack, onClose }: RegistrationConfirmFormProps) => {
     const { t } = useTranslation();
-    const dispatch = useDispatch<any>();
+    const dispatch = useAppDispatch();
     const code = useSelector(getConfirmCode);
     const isConfirm = useSelector(getConfirmCodeIsConfirm);
     const error = useSelector(getConfirmCodeError);
@@ -55,46 +56,51 @@ const ConfirmCodeForm = ({ onBack, onClose }: RegistrationConfirmFormProps) => {
         onClose();
     }, [dispatch, onClose]);
 
-    return !isConfirm ? (
+    return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-            <div className={classNames(cls.RegistrationConfirm, {}, [])}>
-                <h1 className={cls.header}>{t('Введите код')}</h1>
-                <div className={cls.content}>
-                    <label>{t('Код подтверждения')}</label>
-                    <Input
-                        autofocus
-                        type={InputType.TEXT}
-                        className={cls.input}
-                        onChange={onChangeConfirmCode}
-                    />
-                    {error && (
-                        <Text
-                            theme={TextTheme.ERROR}
-                            title={t('Ошибка')}
-                            text={error}
+            {!isConfirm ? (
+                <div className={classNames(cls.RegistrationConfirm, {}, [])}>
+                    <h1 className={cls.header}>{t('Введите код')}</h1>
+                    <div className={cls.content}>
+                        <label>{t('Код подтверждения')}</label>
+                        <Input
+                            autofocus
+                            type={InputType.TEXT}
+                            className={cls.input}
+                            onChange={onChangeConfirmCode}
                         />
-                    )}
-                    <div className={cls.btnWrapper}>
-                        <Button onClick={onConfirmCodeClick}>
-                            {t('Подвердить')}
-                        </Button>
-                        <Button className={cls.btnCancel} onClick={onBack}>
-                            {t('Назад')}
-                        </Button>
+                        {error && (
+                            <Text
+                                theme={TextTheme.ERROR}
+                                title={t('Ошибка')}
+                                text={error}
+                            />
+                        )}
+                        <div className={cls.btnWrapper}>
+                            <Button onClick={onConfirmCodeClick}>
+                                {t('Подвердить')}
+                            </Button>
+                            <Button className={cls.btnCancel} onClick={onBack}>
+                                {t('Назад')}
+                            </Button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            ) : (
+                <div className={cls.ConfirmationWrapper}>
+                    <div className={cls.confirmation}>
+                        <Text title={t('Поздравляем!')} />
+                        <Text text={t('Код успешно подтвержден')} />
+                    </div>
+                    <Button
+                        className={cls.btnWrapper}
+                        onClick={onCloseConfirmForm}
+                    >
+                        {t('Закрыть')}
+                    </Button>
+                </div>
+            )}
         </DynamicModuleLoader>
-    ) : (
-        <div className={cls.ConfirmationWrapper}>
-            <div className={cls.confirmation}>
-                <Text title={t('Поздравляем!')} />
-                <Text text={t('Код успешно подтвержден')} />
-            </div>
-            <Button className={cls.btnWrapper} onClick={onCloseConfirmForm}>
-                {t('Закрыть')}
-            </Button>
-        </div>
     );
 };
 export default ConfirmCodeForm;

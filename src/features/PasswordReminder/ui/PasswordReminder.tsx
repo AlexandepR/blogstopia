@@ -4,7 +4,7 @@ import React, { useCallback } from 'react';
 import { Button } from 'shared/ui/Button/Button';
 import cls from './PasswordReminder.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
     passwordReminderActions,
     passwordReminderReducer,
@@ -12,6 +12,7 @@ import {
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { sendPasswordReminderEmail } from 'features/PasswordReminder/model/services/sendReminderByEmail';
 import { getReminderEmail } from 'features/PasswordReminder/model/selectors/getReminderEmail/getReminderEmail';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface PasswordByEmailReminderProps {
     className?: string;
@@ -28,7 +29,7 @@ const PasswordByEmailReminder = ({
     onSend,
 }: PasswordByEmailReminderProps) => {
     const { t } = useTranslation();
-    const dispatch = useDispatch<any>();
+    const dispatch = useAppDispatch();
     const email = useSelector(getReminderEmail);
 
     const onChangeEmail = useCallback(

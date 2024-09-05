@@ -36,5 +36,8 @@ export function createReduxStore(
 
     // @ts-expect-error its ok)
     store.reducerManager = reducerManager;
+
     return store;
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

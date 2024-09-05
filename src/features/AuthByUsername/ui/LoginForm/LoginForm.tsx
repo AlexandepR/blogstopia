@@ -3,8 +3,8 @@ import { Button, ButtonSize, Hover } from 'shared/ui/Button/Button';
 import cls from './LoginForm.module.scss';
 import { Input, InputType } from 'shared/ui/Input/Input';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useCallback } from 'react';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useSelector, useStore } from 'react-redux';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { getLoginLoginOrEmail } from '../../model/selectors/getLoginLoginOrEmail/getLoginLoginOrEmail';
 import { loginByUserName } from '../../model/services/loginByUserName';
@@ -12,6 +12,9 @@ import type { ReduxStoreWithManager } from 'app/providers/StoreProvider/config/S
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { getRegistrationCurrentStep } from 'features/RegistrationByUserName/model/selectors/getRegistrationCurrentStep/getRegistrationCurrentStep';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { getLoginError } from 'features/AuthByUsername/model/selectors/getLoginError/getLoginError';
+import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface LoginFormProps {
     className?: string;
@@ -25,9 +28,10 @@ const initialReducers = {
 const LoginForm = ({ className, switchToForgotPassword }: LoginFormProps) => {
     const { t } = useTranslation();
     const store = useStore() as ReduxStoreWithManager;
-    const dispatch = useDispatch<any>();
+    const dispatch = useAppDispatch();
     const loginOrEmail = useSelector(getLoginLoginOrEmail);
     const password = useSelector(getLoginPassword);
+    const error = useSelector(getLoginError);
     const currentStep = useSelector(getRegistrationCurrentStep);
 
     const onChangeLogin = useCallback(
@@ -68,6 +72,15 @@ const LoginForm = ({ className, switchToForgotPassword }: LoginFormProps) => {
                             value={password}
                             onChange={onChangePassword}
                         />
+                        {error && (
+                            <Text
+                                className={cls.error}
+                                theme={TextTheme.ERROR}
+                                size={TextSize.S}
+                                title={t('Ошибка')}
+                                text={error}
+                            />
+                        )}
                     </div>
                     <div className={cls.btnWrapper}>
                         <Button onClick={onLoginClick}>{t('Войти')}</Button>

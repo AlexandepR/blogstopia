@@ -4,7 +4,7 @@ import { Button, ButtonSize, Hover } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useSelector, useStore } from 'react-redux';
 import { memo, useCallback, useEffect } from 'react';
 import {
     registrationActions,
@@ -21,6 +21,7 @@ import { getRegistrationCurrentStep } from '../../model/selectors/getRegistratio
 import { getRegistrationError } from '../../model/selectors/getRegistrationError/getRegistrationError';
 import type { ReduxStoreWithManager } from 'app/providers/StoreProvider/config/StateSchema';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface RegistrationFormProps {
     onSend: () => void;
@@ -36,7 +37,7 @@ const initialReducers = {
 const RegistrationForm = memo(
     ({ className, onSend, onClose, onConfirm }: RegistrationFormProps) => {
         const { t } = useTranslation();
-        const dispatch = useDispatch<any>();
+        const dispatch = useAppDispatch();
         const store = useStore() as ReduxStoreWithManager;
         const login = useSelector(getRegistrationLogin);
         const password = useSelector(getRegistrationPassword);
@@ -45,16 +46,14 @@ const RegistrationForm = memo(
         const currentStep = useSelector(getRegistrationCurrentStep);
         const error = useSelector(getRegistrationError);
 
-        const disptach = useDispatch();
-
         useEffect(() => {
             store.reducerManager.add('registrationForm', registrationReducer);
-            disptach({ type: '@INIT REGISTRATION' });
+            dispatch({ type: '@INIT REGISTRATION' });
 
             return () => {
                 store.reducerManager.remove('registrationForm');
             };
-        }, [disptach, store.reducerManager]);
+        }, [dispatch, store.reducerManager]);
 
         const onChangeLogin = useCallback(
             (value: string) => {
