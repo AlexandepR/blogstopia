@@ -1,12 +1,17 @@
 import { TestAsyncThunk } from 'shared/lib/tests/testAsyncThunk/testAsyncThunk';
 import { loginByUserName } from 'features/AuthByUsername/model/services/loginByUserName';
 
-describe('LoginByUserName', () => {
+jest.mock('jwt-decode', () => ({
+    jwtDecode: () => 'jwtDecode',
+}));
+
+describe('LoginByUserName.test', () => {
+    const user = {
+        loginOrEmail: 'user',
+        password: 'user123',
+    };
+
     test('SignIn successfully', async () => {
-        const user = {
-            loginOrEmail: 'user',
-            password: 'user123',
-        };
         const successResponse = {
             data: {
                 accessToken: 'accessToken',
@@ -17,15 +22,12 @@ describe('LoginByUserName', () => {
 
         const result = await thunk.callThunk(user);
 
-        expect(thunk.dispatch).toHaveBeenCalledTimes(2);
+        expect(thunk.dispatch).toHaveBeenCalledTimes(3);
         expect(result.meta.requestStatus).toBe('fulfilled');
         expect(result.payload).toEqual(successResponse.data);
     });
+
     test('SignIn failed', async () => {
-        const user = {
-            loginOrEmail: 'user',
-            password: 'user123',
-        };
         const failedResponse = {
             response: { status: 401 },
         };
