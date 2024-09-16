@@ -72,6 +72,7 @@ export const LoginModal = (props: LoginModalProps) => {
                     <Suspense fallback={<Loader />}>
                         <LoginFormAsync
                             switchToForgotPassword={switchToForgotPassword}
+                            onClose={onClose}
                         />
                     </Suspense>
                 )}

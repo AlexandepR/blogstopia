@@ -19,13 +19,18 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 export interface LoginFormProps {
     className?: string;
     switchToForgotPassword: () => void;
+    onClose: () => void;
 }
 
 const initialReducers = {
     login: loginReducer,
 };
 
-const LoginForm = ({ className, switchToForgotPassword }: LoginFormProps) => {
+const LoginForm = ({
+    className,
+    switchToForgotPassword,
+    onClose,
+}: LoginFormProps) => {
     const { t } = useTranslation();
     const store = useStore() as ReduxStoreWithManager;
     const dispatch = useAppDispatch();
@@ -49,8 +54,12 @@ const LoginForm = ({ className, switchToForgotPassword }: LoginFormProps) => {
     );
 
     const onLoginClick = useCallback(() => {
-        dispatch(loginByUserName({ loginOrEmail, password }));
-    }, [dispatch, loginOrEmail, password]);
+        dispatch(loginByUserName({ loginOrEmail, password })).then((result) => {
+            if (result.meta.requestStatus === 'fulfilled') {
+                onClose();
+            }
+        });
+    }, [onClose, dispatch, loginOrEmail, password]);
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
