@@ -1,0 +1,41 @@
+.item {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.link{
+  transition: opacity 0.3s;
+}
+
+.icon {
+  fill: var(--secondary-color);
+  stroke: var(--secondary-color);
+  margin-right: 10px;
+  transition: opacity 0.3s;
+  flex-shrink: 0;
+}
+
+.collapsed {
+  width: var(--sidebar-width-collapsed);
+
+  .link {
+    opacity: 0;
+    transition: 0.3s opacity;
+    width: 0;
+  }
+
+  .icon {
+    opacity: 1;
+  }
+
+  .switchers {
+    bottom: 7px;
+  }
+
+  .themeSwitch {
+    margin-right: 5px;
+    height: 30px;
+    width: 30px;
+  }
+}
